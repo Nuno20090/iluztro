@@ -1,24 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+
+import { HeaderComponent } from './components/header';
+import { Button } from 'react-bootstrap';
+
+import { HomePage } from './pages/home';
+import { CollectionAPage } from './pages/collectionA';
+import { CollectionBPage } from './pages/collectionB';
+import { CollectionCPage } from './pages/collectionC';
+import { ContactsPage } from './pages/contacts';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <HeaderComponent />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/collection-a" element={<CollectionAPage />} />
+          <Route path="/collection-b" element={<CollectionBPage />} />
+          <Route path="/collection-c" element={<CollectionCPage />} />
+          <Route path="/contacts" element={<ContactsPage />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
