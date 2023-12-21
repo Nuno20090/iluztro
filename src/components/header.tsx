@@ -1,7 +1,19 @@
 import { Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { CollectionPages } from "../data/collections";
 
 export function HeaderComponent() {
+
+    const renderCollectionPages = () => {
+        return CollectionPages.map((page, index) => {
+            return (
+                <LinkContainer to={page.path}>
+                    <Nav.Link>{page.name}</Nav.Link>
+                </LinkContainer>
+            )
+        })
+    }
+
     return (
         <div
             style={{ padding: "1em" }}
@@ -14,15 +26,10 @@ export function HeaderComponent() {
                         <LinkContainer to="/">
                             <Nav.Link>Home</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/collection-a">
-                            <Nav.Link>Collection A</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer to="/collection-b">
-                            <Nav.Link>Collection B</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer to="/collection-c">
-                            <Nav.Link>Collection C</Nav.Link>
-                        </LinkContainer>
+
+                        {/* Collection Pages */}
+                        {renderCollectionPages()}
+
                         <LinkContainer to="/contacts">
                             <Nav.Link>Contacts</Nav.Link>
                         </LinkContainer>
