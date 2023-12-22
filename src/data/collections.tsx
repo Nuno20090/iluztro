@@ -1,25 +1,61 @@
 
-export interface ICollectionPage {
-    id: number
-    name: string;
-    path: string;
+export interface ICollection {
+  id: number;
+  name_en: string;
+  active: boolean;
+  path: string;
+  type: "Collection" | "Outlet";
+  order: number;
 }
 
-export const CollectionPages : ICollectionPage[] = [
-    {
-        id: 1,
-        name: 'Collection A',
-        path: '/collection-a'
-    },
-    {
-        id: 2,
-        name: 'Collection B',
-        path: '/collection-b'
-    },
-    {
-        id: 3,
-        name: 'Collection C',
-        path: '/collection-c'
-    },
+export const Collections: ICollection[] = [
+  {
+    id: 1,
+    name_en: 'Collection A',
+    active: true,
+    path: '/collection-a',
+    type: "Collection",
+    order: 2,
+  },
+  {
+    id: 2,
+    name_en: 'Collection B',
+    active: true,
+    path: '/collection-b',
+    type: "Collection",
+    order: 1,
+  },
+  {
+    id: 3,
+    name_en: 'Collection C',
+    active: true,
+    path: '/collection-c',
+    type: "Collection",
+    order: 3,
+  },
+  {
+    id: 3,
+    name_en: 'Collection D',
+    active: false,
+    path: '/collection-d',
+    type: "Collection",
+    order: 4,
+  },
+  {
+    id: 101,
+    name_en: 'Outlet',
+    active: true,
+    path: '/outlet',
+    type: "Outlet",
+    order: 2,
+  },
+  {
+    id: 102,
+    name_en: 'Exclusive Items',
+    active: true,
+    path: '/exclusive-items',
+    type: "Outlet",
+    order: 1,
+  },
 ];
 

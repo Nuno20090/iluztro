@@ -1,12 +1,25 @@
-import { ICollectionPage, CollectionPages } from "../data/collections";
+import { ICollection, Collections } from "../data/collections";
 
-export class HelperCollections
-{
-    public static GetCollectionPages() : ICollectionPage[] {
-        return CollectionPages;
-    }
+export class HelperCollections {
+  public static GetCollectionPages(): ICollection[] {
+    return Collections;
+  }
 
-    public static GetCollectionPage(collectionID : number) : ICollectionPage {
-        return CollectionPages.find(page => page.id === collectionID)!;
-    }
+  public static GetCollectionsForMenu(): ICollection[] {
+    return Collections.filter(collection =>
+      collection.active &&
+      collection.type === "Collection"
+    ).sort((a, b) => a.order - b.order);
+  }
+
+  public static GetCollectionsForHeader(): ICollection[] {
+    return Collections.filter(collection =>
+      collection.active &&
+      collection.type !== "Collection"
+    ).sort((a, b) => a.order - b.order);
+  }
+
+  public static GetCollectionPage(collectionID: number): ICollection {
+    return Collections.find(page => page.id === collectionID)!;
+  }
 }

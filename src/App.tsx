@@ -4,17 +4,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import { HeaderComponent } from './components/header';
-import { Button } from 'react-bootstrap';
 
 import { HomePage } from './pages/home';
 import { CollectionPage } from './pages/collection';
 import { ContactsPage } from './pages/contacts';
-import { CollectionPages } from './data/collections';
+import { Collections } from './data/collections';
 
 function App() {
 
     const renderCollectionPages = () => {
-        return CollectionPages.map((page, index) => {
+        return Collections.map((page, index) => {
             return (
                 <Route 
                     key={index} 

@@ -1,42 +1,74 @@
-import { Nav, Navbar } from "react-bootstrap";
+import { Dropdown, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { CollectionPages } from "../data/collections";
+import { ICollection } from "../data/collections";
+import { HelperCollections } from "../helpers/helperCollections";
+import { useEffect, useState } from "react";
 
 export function HeaderComponent() {
 
-    const renderCollectionPages = () => {
-        return CollectionPages.map((page, index) => {
-            return (
-                <LinkContainer to={page.path}>
-                    <Nav.Link>{page.name}</Nav.Link>
-                </LinkContainer>
-            )
-        })
-    }
+  const [collections, setCollections] = useState<ICollection[]>([]);
+  const [outlets, setOutlets] = useState<ICollection[]>([]);
 
+  useEffect(() => {
+    setCollections(HelperCollections.GetCollectionsForMenu());
+    setOutlets(HelperCollections.GetCollectionsForHeader());
+  }, [])
+
+  const renderCollectionMenuItem = () => {
     return (
-        <div
-            style={{ padding: "1em" }}
-            className="bg-light">
-            <Navbar bg="light" expand="sm">
-                <Navbar.Brand href="#home">Iluztro</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                        <LinkContainer to="/">
-                            <Nav.Link>Home</Nav.Link>
-                        </LinkContainer>
+      <Dropdown as={Nav.Item}>
+        <Dropdown.Toggle as={Nav.Link} className="nav-link-custom">Collections</Dropdown.Toggle>
+        <Dropdown.Menu>
+          {
+            collections.map((page, index) => {
+              return (
+                <LinkContainer key={page.id} to={page.path}>
+                  <Dropdown.Item>{page.name_en}</Dropdown.Item>
+                </LinkContainer>
+              )
+            })
+          }
+        </Dropdown.Menu>
+      </Dropdown>
+    )
+  }
 
-                        {/* Collection Pages */}
-                        {renderCollectionPages()}
+  const renderOutletsMenusItems = () => {
+    return outlets.map((page, index) => {
+      return (
+        <LinkContainer key={page.id} to={page.path}>
+          <Nav.Link className="nav-link-custom">{page.name_en}</Nav.Link>
+        </LinkContainer>
+      )
+    })
+  }
 
-                        <LinkContainer to="/contacts">
-                            <Nav.Link>Contacts</Nav.Link>
-                        </LinkContainer>
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
-        </div>
-    );
+  return (
+    <div
+      style={{ padding: "1em" }}
+      className="bg-light">
+      <Navbar bg="light" expand="sm">
+        <Navbar.Brand href="#home">Iluztro</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mx-auto">
+            <LinkContainer to="/">
+              <Nav.Link className="nav-link-custom">Home</Nav.Link>
+            </LinkContainer>
+
+            {/* Collection Pages */}
+            {renderCollectionMenuItem()}
+
+            {/* Outlet pages */}
+            {renderOutletsMenusItems()}
+
+            <LinkContainer to="/contacts">
+              <Nav.Link className="nav-link-custom">Contacts</Nav.Link>
+            </LinkContainer>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    </div>
+  );
 }
 
