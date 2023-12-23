@@ -7,7 +7,7 @@ export const Products : IProduct[] = [
     ...ProductsEarrings,
 
     {
-        id: 1,
+        id: 101,
         name_en: 'Product A',
         description_en: 'Description for Product A',
         productType: ProductType.Alfinetes,
@@ -21,7 +21,7 @@ export const Products : IProduct[] = [
         collectionID: 1
     },
     {
-        id: 2,
+        id: 102,
         name_en: 'Product B',
         description_en: 'Description for Product B',
         productType: ProductType.Colares,
@@ -35,7 +35,7 @@ export const Products : IProduct[] = [
         collectionID: 1
     },
     {
-        id: 3,
+        id: 103,
         name_en: 'Product C',
         description_en: 'Description for Product C',
         active: true,

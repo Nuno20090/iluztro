@@ -26,7 +26,7 @@ export const Collections: ICollection[] = [
     order: 3,
   },
   {
-    id: 3,
+    id: 4,
     name_en: 'Collection D',
     active: false,
     path: '/collection-d',
@@ -44,7 +44,7 @@ export const Collections: ICollection[] = [
   {
     id: 102,
     name_en: 'Exclusive Items',
-    active: true,
+    active: false,
     path: '/exclusive-items',
     type: "Outlet",
     order: 1,
