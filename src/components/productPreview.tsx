@@ -17,7 +17,7 @@ export function ProductPreviewComponent(
 
   return (
     <div>
-      <h2>{product?.name}</h2>
+      <h2>{product?.name_en}</h2>
       <div
         style={{
           border: "1px solid black",
