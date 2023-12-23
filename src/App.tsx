@@ -13,6 +13,7 @@ import { Collections } from './data/collections';
 function App() {
 
     const renderCollectionPages = () => {
+
         return Collections.map((page, index) => {
             return (
                 <Route 
@@ -20,7 +21,7 @@ function App() {
                     path={page.path} 
                     element={
                         <CollectionPage 
-                            collectionID={page.id}
+                            //collectionID={page.id}
                         />
                     } 
                 />
@@ -35,7 +36,11 @@ function App() {
         <HeaderComponent />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          { renderCollectionPages() }
+          <Route path="/collection/:collectionID" element={<CollectionPage />} />
+
+
+
+          {/* { renderCollectionPages() } */}
           <Route path="/contacts" element={<ContactsPage />} />
         </Routes>
       </Router>

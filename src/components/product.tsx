@@ -17,7 +17,7 @@ export function ProductComponent(
 
   return (
     <div>
-      <h2>{product!.name}</h2>
+      <h2>{product?.name}</h2>
       <div style={{
         border: "1px solid black",
         backgroundColor: "orange",

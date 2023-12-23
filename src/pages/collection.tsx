@@ -4,28 +4,30 @@ import { HelperCollections } from "../helpers/helperCollections";
 import { IProduct } from "../data/products";
 import { HelperProducts } from "../helpers/helperProducts";
 import { ProductComponent } from "../components/product";
+import { useParams } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
-interface CollectionPageParams {
-  collectionID: number;
-}
-
-export function CollectionPage({
-  collectionID
-}: CollectionPageParams) {
+export function CollectionPage() {
 
   const [collectionPageInfo, setCollectionPageInfo] = useState<ICollection | undefined>(undefined);
   const [collectionProducts, setCollectionProducts] = useState<IProduct[]>([]);
 
+  const { collectionID } = useParams();
+
   useEffect(() => {
 
-    setCollectionPageInfo(HelperCollections.GetCollectionPage(collectionID));
-    setCollectionProducts(HelperProducts.GetCollectionProducts(collectionID));
+    if (!collectionID) {
+      return;
+    }
+
+    setCollectionPageInfo(HelperCollections.GetCollectionPage(Number.parseInt(collectionID)));
+    setCollectionProducts(HelperProducts.GetCollectionProducts(Number.parseInt(collectionID)));
 
   }, [collectionID]);
 
   const randerProducts = () => {
     return (
-      <div>
+      <>
         {
           collectionProducts.map((product, index) => {
             return (
@@ -35,7 +37,7 @@ export function CollectionPage({
             );
           })
         }
-      </div>);
+      </>);
   }
 
   const renderProduct = (product: IProduct) => {
@@ -44,13 +46,22 @@ export function CollectionPage({
     )
   }
 
-  return <div>
-    <h1>
-      {collectionPageInfo?.name_en}
-    </h1>
+  return (
+    <Container>
 
-    <div>
-      {randerProducts()}
-    </div>
-  </div>;
+      <h1 className="mt-md-3">
+        {collectionPageInfo?.name_en}
+      </h1>
+      
+      
+      <div className="collection-filters">
+        Collecion Filters will be here
+      </div>
+
+      <div className="collection-products">
+        {randerProducts()}
+      </div>
+
+    </Container>
+  );
 }
