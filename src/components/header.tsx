@@ -1,8 +1,8 @@
 import { Dropdown, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { ICollection } from "../data/collections";
 import { HelperCollections } from "../helpers/helperCollections";
 import { useEffect, useState } from "react";
+import { ICollection } from "../dataDefinitions/collection";
 
 export function HeaderComponent() {
 

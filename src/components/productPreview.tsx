@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { IProduct } from "../data/products"
 import { HelperProducts } from "../helpers/helperProducts";
+import { IProduct } from "../dataDefinitions/product";
 
 interface ProductPreviewComponentParams {
   productID: number

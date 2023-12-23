@@ -11,37 +11,26 @@ import { ContactsPage } from './pages/contacts';
 import { Collections } from './data/collections';
 
 function App() {
-
-    const renderCollectionPages = () => {
-
-        return Collections.map((page, index) => {
-            return (
-                <Route 
-                    key={index} 
-                    path={page.path} 
-                    element={
-                        <CollectionPage 
-                            //collectionID={page.id}
-                        />
-                    } 
-                />
-            )
-        })
-    }
-
-
   return (
     <div className="App">
       <Router>
         <HeaderComponent />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/collection/:collectionID" element={<CollectionPage />} />
 
+          <Route
+            path="/"
+            element={<HomePage />}
+          />
 
+          <Route
+            path="/collection/:collectionID"
+            element={<CollectionPage />}
+          />
 
-          {/* { renderCollectionPages() } */}
-          <Route path="/contacts" element={<ContactsPage />} />
+          <Route
+            path="/contacts"
+            element={<ContactsPage />}
+          />
         </Routes>
       </Router>
     </div>

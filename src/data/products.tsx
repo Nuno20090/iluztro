@@ -1,12 +1,4 @@
-export interface IProduct
-{
-    id: number,
-    name: string;
-    description: string;
-    photos: string[];
-    price: number;
-    collectionID: number;
-}
+import { IProduct } from "../dataDefinitions/product";
 
 export const Products : IProduct[] = [
     {

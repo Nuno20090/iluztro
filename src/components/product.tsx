@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { IProduct } from "../data/products"
 import { HelperProducts } from "../helpers/helperProducts";
+import { IProduct } from "../dataDefinitions/product";
 
 interface ProductComponentParams {
   productID: number
@@ -11,7 +11,7 @@ export function ProductComponent(
 ) {
   useEffect(() => {
     setProduct(HelperProducts.GetProduct(productID));
-  }, [])
+  }, [productID])
 
   const [product, setProduct] = useState<IProduct | undefined>();
 

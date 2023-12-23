@@ -1,4 +1,5 @@
-import { IProduct, Products } from "../data/products";
+import { Products } from "../data/products";
+import { IProduct } from "../dataDefinitions/product";
 
 export class HelperProducts {
   public static GetProduct(productID: number): IProduct {

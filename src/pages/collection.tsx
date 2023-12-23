@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { ICollection } from "../data/collections";
 import { HelperCollections } from "../helpers/helperCollections";
-import { IProduct } from "../data/products";
 import { HelperProducts } from "../helpers/helperProducts";
 import { ProductComponent } from "../components/product";
 import { useParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
+import { IProduct } from "../dataDefinitions/product";
+import { ICollection } from "../dataDefinitions/collection";
 
 export function CollectionPage() {
 

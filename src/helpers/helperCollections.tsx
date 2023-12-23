@@ -1,4 +1,5 @@
-import { ICollection, Collections } from "../data/collections";
+import { Collections } from "../data/collections";
+import { ICollection } from "../dataDefinitions/collection";
 
 export class HelperCollections {
   public static GetCollectionPages(): ICollection[] {
