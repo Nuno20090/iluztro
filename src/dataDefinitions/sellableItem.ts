@@ -1,13 +1,14 @@
 import { IMeasurement } from "./measurements";
 import { ProductType } from "./productType";
 
-export interface SellableItem {
+export interface ISellableItem {
 
     collectionID: number;
-    product_id: number;
-    variant_id: number | undefined;
+    productID: number;
+    variantID: number | undefined;
 
-    name_en: string;
+    productName_en: string;
+    variantName_en: string | undefined;
     description_en: string;
 
     type: ProductType;

@@ -1,6 +1,6 @@
 import { IMeasurement } from "./measurements";
 import { ProductType } from "./productType";
-import { IVariant } from "./variant";
+import { IProductVariant } from "./variant";
 
 export interface IProduct {
     id: number;
@@ -19,5 +19,5 @@ export interface IProduct {
 
     photos?: string[];
 
-    variants?: IVariant[];
+    variants?: IProductVariant[];
 }

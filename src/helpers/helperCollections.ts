@@ -30,10 +30,10 @@ export class HelperCollections {
   // Retrieves all the product types for a given collection
   public static GetCollectionProductTypes(collectionID: number) {
 
-    let products = HelperProducts.GetCollectionProducts(collectionID);
+    let products = HelperProducts.GetCollectionActiveProducts(collectionID);
 
     // Get all the types from the collection products
-    let productTypesInCollection : ProductType[] = products.map((product) => product.type);
+    let productTypesInCollection: ProductType[] = products.map((product) => product.type);
 
     // Get the unique types
     productTypesInCollection = productTypesInCollection.filter((value, index, self) => {
@@ -45,7 +45,7 @@ export class HelperCollections {
 
     // Filter the available types to only the ones that are in the collection
     return allTypes.filter((value) => {
-        return productTypesInCollection.includes(value.type);
+      return productTypesInCollection.includes(value.type);
     });
   }
 }

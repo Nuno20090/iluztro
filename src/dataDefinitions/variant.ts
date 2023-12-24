@@ -1,6 +1,6 @@
 import { IMeasurement } from "./measurements";
 
-export interface IVariant {
+export interface IProductVariant {
     id: number;
 
     name_en: string;
