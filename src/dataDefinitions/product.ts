@@ -11,7 +11,7 @@ export interface IProduct
 
     active: boolean;
     
-    productType : ProductType;
+    type : ProductType;
 
     price_eur?: number;
     measures?: IMeasurement;

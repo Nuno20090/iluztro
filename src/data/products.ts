@@ -10,7 +10,7 @@ export const Products : IProduct[] = [
         id: 101,
         name_en: 'Product A',
         description_en: 'Description for Product A',
-        productType: ProductType.Alfinetes,
+        type: ProductType.Alfinetes,
         active: true,
         photos: [
             'https://picsum.photos/200/300',
@@ -24,7 +24,7 @@ export const Products : IProduct[] = [
         id: 102,
         name_en: 'Product B',
         description_en: 'Description for Product B',
-        productType: ProductType.Colares,
+        type: ProductType.Colares,
         active: true,
         photos: [
             'https://picsum.photos/200/300',
@@ -39,7 +39,7 @@ export const Products : IProduct[] = [
         name_en: 'Product C',
         description_en: 'Description for Product C',
         active: true,
-        productType: ProductType.Colares,
+        type: ProductType.Colares,
         photos: [
             'https://picsum.photos/200/300',
             'https://picsum.photos/200/300',

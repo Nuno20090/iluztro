@@ -7,7 +7,7 @@ export const ProductsEarrings : IProduct[] = [
         id: 1,
         name_en: 'Le Boudoir De Marie Antoinette',
         description_en: 'Description for Le Boudoir De Marie Antoinette',
-        productType: ProductType.Brincos,
+        type: ProductType.Brincos,
         active: true,
         photos: [
             'https://picsum.photos/200/300',
@@ -47,7 +47,7 @@ export const ProductsEarrings : IProduct[] = [
         id: 2,
         name_en: 'Florilegium',
         description_en: 'Description for Florilegium',
-        productType: ProductType.Brincos,
+        type: ProductType.Brincos,
         active: true,
         photos: [
             'https://picsum.photos/200/300',

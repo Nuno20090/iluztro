@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { IProduct } from "../dataDefinitions/product";
 import { ICollection } from "../dataDefinitions/collection";
+import { CollectionFilterComponent } from "../components/collectionFilter";
 
 export function CollectionPage() {
 
@@ -49,18 +50,25 @@ export function CollectionPage() {
   return (
     <Container>
 
-      <h1 className="mt-md-3">
-        {collectionPageInfo?.name_en}
-      </h1>
-      
-      
-      <div className="collection-filters">
-        Collecion Filters will be here
-      </div>
+      {collectionPageInfo &&
+        <>
+          <h1 className="mt-md-3">
+            {collectionPageInfo.name_en}
+          </h1>
 
-      <div className="collection-products">
-        {randerProducts()}
-      </div>
+          <div className="collection-filters">
+            <CollectionFilterComponent 
+              collectionID={collectionPageInfo.id} />
+          </div>
+
+          <div className="collection-products">
+            {randerProducts()}
+          </div>
+        </>
+
+      }
+
+
 
     </Container>
   );
