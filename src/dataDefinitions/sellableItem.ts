@@ -1,16 +1,14 @@
 import { IMeasurement } from "./measurements";
 import { ProductType } from "./productType";
-import { IVariant } from "./variant";
 
-export interface IProduct {
-    id: number;
+export interface SellableItem {
 
     collectionID: number;
+    product_id: number;
+    variant_id: number | undefined;
 
     name_en: string;
     description_en: string;
-
-    active: boolean;
 
     type: ProductType;
 
@@ -18,6 +16,4 @@ export interface IProduct {
     measures?: IMeasurement;
 
     photos?: string[];
-
-    variants?: IVariant[];
 }
