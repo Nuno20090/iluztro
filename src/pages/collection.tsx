@@ -7,11 +7,14 @@ import { Container } from "react-bootstrap";
 import { IProduct } from "../dataDefinitions/product";
 import { ICollection } from "../dataDefinitions/collection";
 import { CollectionFilterComponent } from "../components/collectionFilter";
+import { ProductTypeFilter } from "../dataDefinitions/collectionFilter";
+import { ProductPreviewComponent } from "../components/productPreview";
 
 export function CollectionPage() {
 
   const [collectionPageInfo, setCollectionPageInfo] = useState<ICollection | undefined>(undefined);
   const [collectionProducts, setCollectionProducts] = useState<IProduct[]>([]);
+  const [productsFilter, setProductsFilter] = useState<ProductTypeFilter>("All");
 
   const { collectionID } = useParams();
 
@@ -22,9 +25,15 @@ export function CollectionPage() {
     }
 
     setCollectionPageInfo(HelperCollections.GetCollectionPage(Number.parseInt(collectionID)));
-    setCollectionProducts(HelperProducts.GetCollectionProducts(Number.parseInt(collectionID)));
+    
+    let collectionProducts = HelperProducts.GetCollectionProducts(Number.parseInt(collectionID));
+    let visibleCollectionProducts = collectionProducts.filter((product) => {
+      return product.type === productsFilter || productsFilter === "All";
+    });
+    
+    setCollectionProducts(visibleCollectionProducts);
 
-  }, [collectionID]);
+  }, [collectionID, productsFilter]);
 
   const randerProducts = () => {
     return (
@@ -43,7 +52,7 @@ export function CollectionPage() {
 
   const renderProduct = (product: IProduct) => {
     return (
-      <ProductComponent productID={product.id}></ProductComponent>
+      <ProductPreviewComponent productID={product.id}></ProductPreviewComponent>
     )
   }
 
@@ -58,7 +67,12 @@ export function CollectionPage() {
 
           <div className="collection-filters">
             <CollectionFilterComponent 
-              collectionID={collectionPageInfo.id} />
+              collectionID={collectionPageInfo.id} 
+              onFilterChanged={
+                (productType) => {
+                  setProductsFilter(productType);
+                }
+              }/>
           </div>
 
           <div className="collection-products">

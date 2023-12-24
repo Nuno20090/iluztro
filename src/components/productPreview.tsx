@@ -18,6 +18,7 @@ export function ProductPreviewComponent(
   return (
     <div>
       <h2>{product?.name_en}</h2>
+      <p>{`${product?.variants?.length} variants`}</p>
       <div
         style={{
           border: "1px solid black",
