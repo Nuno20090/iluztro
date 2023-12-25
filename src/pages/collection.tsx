@@ -3,19 +3,17 @@ import { HelperCollections } from "../helpers/helperCollections";
 import { HelperProducts } from "../helpers/helperProducts";
 import { useParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import { IProduct } from "../dataDefinitions/product";
 import { ICollection } from "../dataDefinitions/collection";
 import { CollectionFilterComponent } from "../components/collectionFilter";
 import { ProductTypeFilter } from "../dataDefinitions/collectionFilter";
 import { SellableItemPreviewComponent } from "../components/sellableItemPreview";
+import { ISellableItem } from "../dataDefinitions/sellableItem";
 
 export function CollectionPage() {
 
   const [collectionPageInfo, setCollectionPageInfo] = useState<ICollection | undefined>(undefined);
 
-  // Trocar isto por SellableItems!
-  const [collectionProducts, setCollectionProducts] = useState<IProduct[]>([]);
-
+  const [sellableItems, setSellableItems] = useState<ISellableItem[]>([]);
   const [productsFilter, setProductsFilter] = useState<ProductTypeFilter>("All");
 
   const { collectionID } = useParams();
@@ -28,23 +26,23 @@ export function CollectionPage() {
 
     setCollectionPageInfo(HelperCollections.GetCollectionPage(Number.parseInt(collectionID)));
 
-    let collectionProducts = HelperProducts.GetCollectionActiveProducts(Number.parseInt(collectionID));
-    let visibleCollectionProducts = collectionProducts.filter((product) => {
-      return product.type === productsFilter || productsFilter === "All";
+    let sellableItems = HelperProducts.GetSellableItems(Number.parseInt(collectionID));
+
+    let visibleSellableItems = sellableItems.filter((sellableItem) => {
+      return sellableItem.type === productsFilter || productsFilter === "All"
     });
 
-    setCollectionProducts(visibleCollectionProducts);
-
+    setSellableItems(visibleSellableItems);
   }, [collectionID, productsFilter]);
 
-  const randerProducts = () => {
+  const randerSellableItems = () => {
     return (
       <>
         {
-          collectionProducts.map((product, index) => {
+          sellableItems.map((sellableItem) => {
             return (
-              <div key={product.id}>
-                {renderProduct(product)}
+              <div key={`${sellableItem.productID}|${sellableItem.variantID}`}>
+                {renderSellableItem(sellableItem)}
               </div>
             );
           })
@@ -52,9 +50,12 @@ export function CollectionPage() {
       </>);
   }
 
-  const renderProduct = (product: IProduct) => {
+  const renderSellableItem = (sellableItem: ISellableItem) => {
     return (
-      <SellableItemPreviewComponent productID={product.id}></SellableItemPreviewComponent>
+      <SellableItemPreviewComponent 
+        productID={sellableItem.productID}
+        variantID={sellableItem.variantID}
+      ></SellableItemPreviewComponent>
     )
   }
 
@@ -74,18 +75,15 @@ export function CollectionPage() {
                 (productType) => {
                   setProductsFilter(productType);
                 }
-              } />
+              } 
+            />
           </div>
 
           <div className="collection-products">
-            {randerProducts()}
+            {randerSellableItems()}
           </div>
         </>
-
       }
-
-
-
     </Container>
   );
 }
