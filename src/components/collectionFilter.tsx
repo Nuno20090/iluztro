@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { HelperCollections } from "../helpers/helperCollections";
-import { IProductType, ProductType } from "../dataDefinitions/productType";
+import { IProductType } from "../dataDefinitions/productType";
 import { ProductTypeButton } from "./buttons/productTypeButton";
 import { ProductTypeFilter } from "../dataDefinitions/collectionFilter";
 
@@ -28,14 +28,9 @@ export function CollectionFilterComponent(
   }, [collectionID]);
 
   return (
-
     <>
-
       {
-        // ToDo: Check with Brigida
         productTypes.length > 1 && <>
-          <h1>Collection Filter</h1>
-
           <div className="collection-filters">
 
             <ProductTypeButton

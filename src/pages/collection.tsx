@@ -11,79 +11,92 @@ import { ISellableItem } from "../dataDefinitions/sellableItem";
 
 export function CollectionPage() {
 
-  const [collectionPageInfo, setCollectionPageInfo] = useState<ICollection | undefined>(undefined);
+    const [collectionPageInfo, setCollectionPageInfo] = useState<ICollection | undefined>(undefined);
 
-  const [sellableItems, setSellableItems] = useState<ISellableItem[]>([]);
-  const [productsFilter, setProductsFilter] = useState<ProductTypeFilter>("All");
+    const [sellableItems, setSellableItems] = useState<ISellableItem[]>([]);
+    const [productsFilter, setProductsFilter] = useState<ProductTypeFilter>("All");
 
-  const { collectionID } = useParams();
+    const { collectionID } = useParams();
 
-  useEffect(() => {
+    useEffect(() => {
 
-    if (!collectionID) {
-      return;
+        if (!collectionID) {
+            return;
+        }
+
+        setCollectionPageInfo(HelperCollections.GetCollectionPage(Number.parseInt(collectionID)));
+
+        let sellableItems = HelperProducts.GetSellableItems(Number.parseInt(collectionID));
+
+        let visibleSellableItems = sellableItems.filter((sellableItem) => {
+            return sellableItem.type === productsFilter || productsFilter === "All"
+        });
+
+        setSellableItems(visibleSellableItems);
+    }, [collectionID, productsFilter]);
+
+    const randerSellableItems = () => {
+        return (
+            <>
+                {
+                    sellableItems.map((sellableItem) => {
+                        return (
+                            <div key={`${sellableItem.productID}|${sellableItem.variantID}`}>
+                                {renderSellableItem(sellableItem)}
+                            </div>
+                        );
+                    })
+                }
+            </>);
     }
 
-    setCollectionPageInfo(HelperCollections.GetCollectionPage(Number.parseInt(collectionID)));
+    const renderSellableItem = (sellableItem: ISellableItem) => {
+        return (
+            <SellableItemPreviewComponent
+                productID={sellableItem.productID}
+                variantID={sellableItem.variantID}
+            ></SellableItemPreviewComponent>
+        )
+    }
 
-    let sellableItems = HelperProducts.GetSellableItems(Number.parseInt(collectionID));
-
-    let visibleSellableItems = sellableItems.filter((sellableItem) => {
-      return sellableItem.type === productsFilter || productsFilter === "All"
-    });
-
-    setSellableItems(visibleSellableItems);
-  }, [collectionID, productsFilter]);
-
-  const randerSellableItems = () => {
     return (
-      <>
-        {
-          sellableItems.map((sellableItem) => {
-            return (
-              <div key={`${sellableItem.productID}|${sellableItem.variantID}`}>
-                {renderSellableItem(sellableItem)}
-              </div>
-            );
-          })
-        }
-      </>);
-  }
+        <Container>
 
-  const renderSellableItem = (sellableItem: ISellableItem) => {
-    return (
-      <SellableItemPreviewComponent 
-        productID={sellableItem.productID}
-        variantID={sellableItem.variantID}
-      ></SellableItemPreviewComponent>
-    )
-  }
+            {collectionPageInfo &&
+                <>
+                    <h1 className="collection-name">
+                        {collectionPageInfo.name_en}
+                    </h1>
 
-  return (
-    <Container>
+                    {collectionPageInfo.description_en &&
+                        <div style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            textAlign: "center",
+                            width: "100%"
+                        }}>
+                            <p className="collection-description">
+                                {collectionPageInfo.description_en}
+                            </p>
+                        </div>
+                    }
 
-      {collectionPageInfo &&
-        <>
-          <h1 className="mt-md-3">
-            {collectionPageInfo.name_en}
-          </h1>
+                    <div className="collection-filters">
+                        <CollectionFilterComponent
+                            collectionID={collectionPageInfo.id}
+                            onFilterChanged={
+                                (productType) => {
+                                    setProductsFilter(productType);
+                                }
+                            }
+                        />
+                    </div>
 
-          <div className="collection-filters">
-            <CollectionFilterComponent
-              collectionID={collectionPageInfo.id}
-              onFilterChanged={
-                (productType) => {
-                  setProductsFilter(productType);
-                }
-              } 
-            />
-          </div>
-
-          <div className="collection-products">
-            {randerSellableItems()}
-          </div>
-        </>
-      }
-    </Container>
-  );
+                    <div className="collection-products">
+                        {randerSellableItems()}
+                    </div>
+                </>
+            }
+        </Container>
+    );
 }

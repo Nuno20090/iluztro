@@ -1,8 +1,8 @@
 export interface ICollection {
     id: number;
     name_en: string;
+    description_en?: string;
     active: boolean;
-    path: string;
     type: "Collection" | "Outlet";
     order: number;
   }

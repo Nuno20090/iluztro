@@ -6,6 +6,7 @@ import { HeaderComponent } from './components/header';
 import { HomePage } from './pages/home';
 import { CollectionPage } from './pages/collection';
 import { ContactsPage } from './pages/contacts';
+import { ProductPage } from './pages/product';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -25,6 +26,11 @@ function App() {
           <Route
             path="/collection/:collectionID"
             element={<CollectionPage />}
+          />
+
+          <Route
+            path="/product/:productID"
+            element={<ProductPage />}
           />
 
           <Route

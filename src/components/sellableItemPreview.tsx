@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { HelperProducts } from "../helpers/helperProducts";
-import { IProduct } from "../dataDefinitions/product";
 import { ISellableItem } from "../dataDefinitions/sellableItem";
+import { Link } from "react-router-dom";
 
 interface ProductPreviewComponentParams {
   productID: number,
@@ -20,27 +20,35 @@ export function SellableItemPreviewComponent(
 
 
   return (
-    <div>
-      {sellableItem &&
-        <div>
-          <h2>{sellableItem.productName_en}</h2>
-          {sellableItem.variantName_en &&
-            <h3>
-              {sellableItem.variantName_en}
-            </h3>
-          }
-          <p>{`${sellableItem.price_eur}€`}</p>
-          <div
-            style={{
-              border: "1px solid black",
-              backgroundColor: "orange",
-              width: "200px",
-              height: "200px",
-            }}>
-          </div>
-        </div>
-      }
+    <Link
+      to={`/product/${productID}`}
+      style={{ textDecoration: 'none', color: 'inherit' }}>
 
-    </div>
+      <div className="sellable-item-preview">
+        {sellableItem &&
+          <div>
+            <div
+              className="image-holder"
+            >
+            </div>
+            <p
+              className="product-name">
+              {sellableItem.productName_en}
+            </p>
+            {sellableItem.variantName_en &&
+              <p
+                className="product-variant">
+                {sellableItem.variantName_en}
+              </p>
+            }
+            <p
+              className="product-price">
+              {`${sellableItem.price_eur}€`}
+            </p>
+          </div>
+        }
+
+      </div>
+    </Link>
   )
 }
