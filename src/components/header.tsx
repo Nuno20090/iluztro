@@ -22,7 +22,7 @@ export function HeaderComponent() {
           {
             collections.map((page, index) => {
               return (
-                <LinkContainer key={page.id} to={`/collection/${page.id}`}>
+                <LinkContainer key={page.id} to={`/iluztro/collection/${page.id}`}>
                   <Dropdown.Item>{page.name_en}</Dropdown.Item>
                 </LinkContainer>
               )
@@ -36,7 +36,7 @@ export function HeaderComponent() {
   const renderOutletsMenusItems = () => {
     return outlets.map((page, index) => {
       return (
-        <LinkContainer key={page.id} to={`/collection/${page.id}`}>
+        <LinkContainer key={page.id} to={`/iluztro/collection/${page.id}`}>
           <Nav.Link className="nav-link-custom">{page.name_en}</Nav.Link>
         </LinkContainer>
       )
