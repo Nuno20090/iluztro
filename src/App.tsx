@@ -19,7 +19,7 @@ function App() {
         <Routes>
 
           <Route
-            path="/iluztro/"
+            path="/"
             element={<HomePage />}
           />
 
