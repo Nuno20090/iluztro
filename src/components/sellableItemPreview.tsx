@@ -18,10 +18,22 @@ export function SellableItemPreviewComponent(
     setSellableItem(HelperProducts.GetSellableItem(productID, variantID));
   }, [productID, variantID])
 
+  const getSellableItemLink = () => {
+    if (!sellableItem) {
+      return "";
+    }
+
+    if (sellableItem.variantID === undefined) {
+      return `/product/${sellableItem.productID}`;
+    }
+    else {
+      return `/product/${sellableItem.productID}?variantID=${sellableItem.variantID}`;
+    }
+  }
 
   return (
     <Link
-      to={`/product/${productID}`}
+      to={getSellableItemLink()}
       style={{ textDecoration: 'none', color: 'inherit' }}>
 
       <div className="sellable-item-preview">

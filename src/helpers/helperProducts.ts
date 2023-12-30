@@ -98,7 +98,7 @@ export class HelperProducts {
 
       productName_en: product.name_en,
       variantName_en: variant.name_en,
-      description_en: product.description_en,
+      description_en: variant.description_en || product.description_en,
 
       type: product.type,
       price_eur: variant.price_eur || product.price_eur,
