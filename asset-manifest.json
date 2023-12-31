@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/iluztro/static/css/main.d3381730.css",
-    "main.js": "/iluztro/static/js/main.4b80d944.js",
+    "main.css": "/iluztro/static/css/main.bcbb4863.css",
+    "main.js": "/iluztro/static/js/main.c6506074.js",
     "static/js/787.5108d95f.chunk.js": "/iluztro/static/js/787.5108d95f.chunk.js",
     "index.html": "/iluztro/index.html",
-    "main.d3381730.css.map": "/iluztro/static/css/main.d3381730.css.map",
-    "main.4b80d944.js.map": "/iluztro/static/js/main.4b80d944.js.map",
+    "main.bcbb4863.css.map": "/iluztro/static/css/main.bcbb4863.css.map",
+    "main.c6506074.js.map": "/iluztro/static/js/main.c6506074.js.map",
     "787.5108d95f.chunk.js.map": "/iluztro/static/js/787.5108d95f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d3381730.css",
-    "static/js/main.4b80d944.js"
+    "static/css/main.bcbb4863.css",
+    "static/js/main.c6506074.js"
   ]
 }
