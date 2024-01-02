@@ -1,6 +1,5 @@
 
-export enum ProductType
-{
+export enum ProductType {
     Brincos = 1,
     Colares = 2,
     Pulseiras = 3,
@@ -9,10 +8,10 @@ export enum ProductType
     Pendentes = 7
 }
 
-export interface IProductType
-{
-    type : ProductType;
-    name_en : string;
+export interface IProductType {
+    type: ProductType;
+    name_plural_en: string;
+    name_singular_en: string;
 
     order: number;
 }

@@ -6,6 +6,7 @@ import { Dropdown } from 'react-bootstrap';
 import { ISellableItem } from "../dataDefinitions/sellableItem";
 import { IProduct } from "../dataDefinitions/product";
 import { HelperProductTypes } from "../helpers/helperProductTypes";
+import { SellableItemImages } from "../components/sellableItemImages";
 
 export function ProductPage() {
 
@@ -129,10 +130,9 @@ export function ProductPage() {
                         <div
                             className="image-holder"
                         >
-                            <img
-                                className="image-holder"
-                                src={process.env.PUBLIC_URL + "/images/earrings/1013/10131/001.jpg"}
-                                alt="Description" />
+                            <SellableItemImages
+                                sellableItem={sellableItem}
+                            ></SellableItemImages>
                         </div>
 
                         <div className="item-info">
