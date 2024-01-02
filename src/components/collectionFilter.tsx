@@ -6,7 +6,7 @@ import { ProductTypeFilter } from "../dataDefinitions/collectionFilter";
 
 interface CollectionFilterProps {
   collectionID: number;
-  onFilterChanged : (productType: ProductTypeFilter) => void;
+  onFilterChanged: (productType: ProductTypeFilter) => void;
 }
 
 export function CollectionFilterComponent(
@@ -44,7 +44,7 @@ export function CollectionFilterComponent(
                 return (
                   <div key={productType.type}>
                     <ProductTypeButton
-                      label={productType.name_en}
+                      label={productType.name_plural_en}
                       productType={productType.type}
                       onClicked={handleProductTypeClicked}
                     />

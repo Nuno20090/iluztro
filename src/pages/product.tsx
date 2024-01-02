@@ -5,6 +5,7 @@ import { Container } from "react-bootstrap";
 import { Dropdown } from 'react-bootstrap';
 import { ISellableItem } from "../dataDefinitions/sellableItem";
 import { IProduct } from "../dataDefinitions/product";
+import { HelperProductTypes } from "../helpers/helperProductTypes";
 
 export function ProductPage() {
 
@@ -81,7 +82,7 @@ export function ProductPage() {
 
         return (
             <Dropdown
-                className="w-100"
+                className="w-100 variants-dropdown"
                 onSelect={handleVariantSelect}
             >
                 <Dropdown.Toggle
@@ -112,37 +113,42 @@ export function ProductPage() {
         <Container
             className="sellable-item">
             {productInfo && sellableItem &&
-                <>
-                    <h1>
-                        {sellableItem.productName_en}
-                    </h1>
+                <div className="contents">
+
+                    <div className="header">
+                        <h4 className="type">
+                            {HelperProductTypes.GetProductTypeNameSingular(productInfo.type)}
+                        </h4>
+                        <h1 className="name">
+                            {sellableItem.productName_en}
+                        </h1>
+                    </div>
 
                     <div className="item-contents">
 
                         <div
                             className="image-holder"
                         >
-                            (image here)
+                            <img
+                                className="image-holder"
+                                src={process.env.PUBLIC_URL + "/images/earrings/1013/10131/001.jpg"}
+                                alt="Description" />
                         </div>
 
                         <div className="item-info">
 
-
                             {renderProductVariantsDropdown()}
-
 
                             <p className="item-description">
                                 {sellableItem.description_en}
                             </p>
-
-
 
                             <p className="item-price">
                                 {`${productInfo.price_eur}€`}
                             </p>
                         </div>
                     </div>
-                </>
+                </div>
             }
         </Container>
     );

@@ -202,9 +202,10 @@ export const Products: IProduct[] = [
         type: ProductType.Brincos,
         active: true,
         photos: [
-            'https://picsum.photos/200/300',
-            'https://picsum.photos/200/300',
-            'https://picsum.photos/200/300',
+            "images/earrings/1013/001.jpg",
+            "images/earrings/1013/002.jpg",
+            "images/earrings/1013/003.jpg",
+            "images/earrings/1013/004.jpg"
         ],
         price_eur: 17,
         collectionID: 2,
@@ -216,15 +217,25 @@ export const Products: IProduct[] = [
                 description_en: "Discover the epitome of grace blended with a daring spirit in our Red Square Earrings. Designed for those who love to make a statement, these earrings feature a stunning square design that symbolizes balance and stability, while their vibrant red hue speaks of passion and confidence. Crafted with meticulous attention to detail, each earring showcases a glossy, deep red finish that catches the light beautifully, adding a touch of glamour to any outfit. Whether it's a night out in the city or a special occasion, these Red Square Earrings are your perfect companion, offering a bold yet sophisticated look that's guaranteed to turn heads. Embrace the power of red and let your style shine!",
                 active: true,
                 price_eur: 17,
-
+                photos: [
+                    "images/earrings/1013/10131/001.jpg",
+                    "images/earrings/1013/10131/002.jpg",
+                    "images/earrings/1013/10131/003.jpg",
+                    "images/earrings/1013/10131/004.jpg"
+                ]
             },
             {
                 id: 10132,
                 name_en: "Square - Blue",
                 description_en: "Step into a world of calm elegance with our Blue Square Earrings. Inspired by the tranquil essence of the ocean, these earrings bring a soothing presence to your everyday style. The cool blue shade represents depth, wisdom, and confidence, making these earrings more than just an accessory - they're a statement of poise and serenity. Each square-cut gem is carefully set in a sleek, minimalistic frame, reflecting a modern aesthetic that's versatile yet distinctive. Ideal for both casual and formal wear, the Blue Square Earrings offer a subtle splash of color that complements any look. Let these earrings be a reminder of the peaceful moments in life, and carry a sense of tranquility with you wherever you go.",
                 active: true,
-                price_eur: 17,
-
+                price_eur: 19,
+                photos: [
+                    "images/earrings/1013/10132/001.jpg",
+                    "images/earrings/1013/10132/002.jpg",
+                    "images/earrings/1013/10132/003.jpg",
+                    "images/earrings/1013/10132/004.jpg"
+                ]
             }
         ]
     },
