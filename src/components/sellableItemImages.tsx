@@ -36,7 +36,6 @@ export function SellableItemImages({
           {/* Show the selected image */}
           <div className="image-container-regular"
             onClick={handleImageClick}>
-
             <img
               src={ImagePaths.get(photos[selectedImageIndex])}
               alt={""}
@@ -89,6 +88,7 @@ export function SellableItemImages({
           {
             showImageExpanded &&
             <ImageExpanded
+              modelName={sellableItem.productName_en}
               photos={photos}
               selectedImageIndex={selectedImageIndex}
               setSelectedImageIndex={setSelectedImageIndex}
