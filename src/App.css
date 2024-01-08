@@ -85,13 +85,12 @@
   width: 18rem;
   height: 18rem;
   object-fit: cover;
-  border: 1px solid orange;
+  border: 1px solid grey;
 }
 
 .sellable-item-preview .product-name {
   font-size: 1.5rem;
   color: #212d44;
-  margin-top: 0.5rem;
   margin-bottom: 0.1rem;
 }
 
@@ -130,7 +129,6 @@
 }
 
 .sellable-item .name {
-  line-height: 1.3rem;
   text-align: left;
 }
 

@@ -19,6 +19,7 @@ export function SellableItemImages({
   const photos = sellableItem?.photos;
 
   useEffect(() => {
+    setSelectedImageIndex(0);
     setImageCount(sellableItem?.photos?.length || 0);
   }, [sellableItem]);
 

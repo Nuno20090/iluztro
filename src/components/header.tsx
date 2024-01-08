@@ -48,7 +48,9 @@ export function HeaderComponent() {
       style={{ padding: "1em" }}
       className="bg-light">
       <Navbar bg="light" expand="sm">
-        <Navbar.Brand href="#home">Iluztro</Navbar.Brand>
+        <LinkContainer to="/">
+          <Navbar.Brand>Iluztro</Navbar.Brand>
+        </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto">

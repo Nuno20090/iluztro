@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { HelperProducts } from "../helpers/helperProducts";
 import { ISellableItem } from "../dataDefinitions/sellableItem";
 import { Link } from "react-router-dom";
+import { ImagePaths } from "../library/imagesPaths";
 
 interface ProductPreviewComponentParams {
   productID: number,
@@ -31,6 +32,36 @@ export function SellableItemPreviewComponent(
     }
   }
 
+  const renderImage = () => {
+
+    const defaultImageElem = <div className="image-holder"></div>;
+
+    if (!sellableItem) {
+      return defaultImageElem;
+    }
+
+    if (sellableItem.photos === undefined || sellableItem.photos.length === 0) {
+      return defaultImageElem;
+    }
+
+    return (
+      <div
+        className="image-holder"
+      >
+        <img
+          className="image"
+          src={ImagePaths.get(sellableItem.photos[0])}
+          alt={ImagePaths.get(sellableItem.photos[0])}
+          style={{
+            objectFit: 'cover',
+            width: '100%',
+            height: '100%',
+          }}
+        />
+      </div>
+    )
+  }
+
   return (
     <Link
       to={getSellableItemLink()}
@@ -39,10 +70,8 @@ export function SellableItemPreviewComponent(
       <div className="sellable-item-preview">
         {sellableItem &&
           <div>
-            <div
-              className="image-holder"
-            >
-            </div>
+            {renderImage()}
+
             <p
               className="product-name">
               {sellableItem.productName_en}
@@ -61,6 +90,6 @@ export function SellableItemPreviewComponent(
         }
 
       </div>
-    </Link>
+    </Link >
   )
 }

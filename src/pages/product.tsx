@@ -54,7 +54,6 @@ export function ProductPage() {
         }
 
         const variantID = Number.parseInt(eventKey || "0");
-
         navigate(`/product/${productID}?variantID=${variantID}`);
     };
 
