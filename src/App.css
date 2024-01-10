@@ -44,45 +44,59 @@
 
 .collection-name {
   padding-top: 1.5em;
-  margin-bottom: 1.0em;
+  padding-bottom: 1.5em;
+  margin: 0;
   font-size: 3rem;
   color: #212d44;
-  font-style: italic;
-  _line-height: 4em;
+  font-family: 'Quattrocento', serif;
 }
 
 .collection-description {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0rem;
   line-height: 2rem;
-  width: 80%;
+  text-wrap: balance;
+
+  _font-size: 1.2rem;
+  _font-family: 'Vollkorn', serif;
+
+  _font-size: 1.2rem;
+  _font-family: 'Playfair Display', serif;
+
+  font-size: 1.2rem;
+  font-family: 'Quattrocento', serif;
+
 }
 
 .collection-filters {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   gap: 20px;
 }
 
 .collection-products {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
   gap: 40px 20px;
-  width: fit-content;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+
 }
 
 .sellable-item-preview {
-  width: 18rem;
   height: 24rem;
   cursor: pointer;
-  _background-color: beige;
+  align-items: center;
+  justify-items: center;
+}
+
+.sellable-item-preview:hover {
+  background-color: beige;
+
 }
 
 .sellable-item-preview .image-holder {
-  width: 18rem;
   height: 18rem;
   object-fit: cover;
   border: 1px solid grey;
@@ -91,6 +105,15 @@
 .sellable-item-preview .product-name {
   font-size: 1.5rem;
   color: #212d44;
+  margin-bottom: 0.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sellable-item-preview .product-type {
+  font-size: 1.0rem;
+  color: #acacac;
   margin-bottom: 0.1rem;
 }
 
@@ -106,6 +129,7 @@
   font-size: 1.0rem;
   color: #808080;
   font-weight: 500;
+  text-align: left;
 }
 
 
@@ -136,7 +160,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  align-items: top;
+  align-items: start;
   justify-content: space-between;
   gap: 1rem;
   width: 100%;
@@ -165,10 +189,12 @@
 
 .sellable-item .item-description {
   text-align: start;
+  line-height: 2em;
 }
 
 .sellable-item .item-price {
   text-align: start;
+  font-weight: 600;
 }
 
 .sellable-item .variants-dropdown {
@@ -244,6 +270,18 @@
   width: 100%;
 }
 
+.sellable-item .gallery {
+  margin-block: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1rem;
+  width: 100%;
+
+}
+
 * {
   box-sizing: border-box;
+  font-family: 'Quattrocento', serif;
 }

@@ -61,7 +61,7 @@ export const Collections: ICollection[] = [
     id: 8,
     name_en: 'Peças [jornadas da juventude]',
     description_en: "Peças, inspired by the journeys of youth, is a vibrant and eclectic collection. It celebrates the spirit of adventure and the joy of discovery, featuring designs that are as dynamic and diverse as the experiences of young explorers.",
-    active: true,
+    active: false,
     type: "Collection",
     order: 8,
   },
@@ -101,7 +101,7 @@ export const Collections: ICollection[] = [
   {
     id: 101,
     name_en: 'Outlet',
-    active: true,
+    active: false,
     type: "Outlet",
     order: 2,
   },

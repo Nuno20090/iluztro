@@ -51,15 +51,7 @@ export function SellableItemImages({
           {
             imageCount > 1 &&
             <div
-              style={{
-                paddingTop: "1rem",
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-                justifyContent: "flex-start",
-                gap: "1rem",
-                width: "100%",
-              }}
+              className="gallery"
             >
 
               {

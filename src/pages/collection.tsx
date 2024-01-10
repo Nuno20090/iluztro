@@ -73,7 +73,9 @@ export function CollectionPage() {
                             display: "flex",
                             justifyContent: "center",
                             textAlign: "center",
-                            width: "100%"
+                            width: "100%",
+                            backgroundColor: "#faebd7",
+                            padding: "3rem"
                         }}>
                             <p className="collection-description">
                                 {collectionPageInfo.description_en}

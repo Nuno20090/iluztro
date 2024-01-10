@@ -3,6 +3,7 @@ import { HelperProducts } from "../helpers/helperProducts";
 import { ISellableItem } from "../dataDefinitions/sellableItem";
 import { Link } from "react-router-dom";
 import { ImagePaths } from "../library/imagesPaths";
+import { HelperProductTypes } from "../helpers/helperProductTypes";
 
 interface ProductPreviewComponentParams {
   productID: number,
@@ -34,7 +35,7 @@ export function SellableItemPreviewComponent(
 
   const renderImage = () => {
 
-    const defaultImageElem = <div className="image-holder"></div>;
+    const defaultImageElem = <div className="image-holder" style={{ width: "100%" }}></div>;
 
     if (!sellableItem) {
       return defaultImageElem;
@@ -66,26 +67,50 @@ export function SellableItemPreviewComponent(
     <Link
       to={getSellableItemLink()}
       style={{ textDecoration: 'none', color: 'inherit' }}>
-
       <div className="sellable-item-preview">
         {sellableItem &&
           <div>
             {renderImage()}
 
-            <p
-              className="product-name">
-              {sellableItem.productName_en}
-            </p>
-            {sellableItem.variantName_en &&
+            <div style={{
+              padding: '0.5rem'
+            }}>
+
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'baseline',
+                  marginTop: '0.5rem',
+                  gap: '1.5rem',
+                  width: '100%',
+                }}>
+
+                {sellableItem.variantName_en &&
+                  <p
+                    className="product-name">
+                    {sellableItem.variantName_en}
+                  </p>
+                }
+                {sellableItem.variantName_en === undefined &&
+                  <p
+                    className="product-name">
+                    {sellableItem.productName_en}
+                  </p>
+                }
+
+                <p
+                  className="product-type">
+                  {HelperProductTypes.GetProductTypeNameSingular(sellableItem.type)}
+                </p>
+              </div>
+
               <p
-                className="product-variant">
-                {sellableItem.variantName_en}
+                className="product-price">
+                {`${sellableItem.price_eur}€`}
               </p>
-            }
-            <p
-              className="product-price">
-              {`${sellableItem.price_eur}€`}
-            </p>
+            </div>
           </div>
         }
 

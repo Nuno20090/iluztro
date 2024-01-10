@@ -1,6 +1,6 @@
 export class ImagePaths {
 
-    static seed = 0;
+    static seed = 69;
 
     static get(path: string): string {
 
@@ -10,7 +10,7 @@ export class ImagePaths {
         }
 
         if (path.startsWith("dummy")) {
-            ImagePaths.seed += 1;
+            //ImagePaths.seed += 1;
             return `https://picsum.photos/seed/${ImagePaths.seed}/800/600?grayscale`;
         }
 
