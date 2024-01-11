@@ -9,6 +9,7 @@ import { ContactsPage } from './pages/contacts';
 import { ProductPage } from './pages/product';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './custom.css';
 import './App.css';
 
 function App() {

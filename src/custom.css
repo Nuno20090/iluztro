@@ -1,0 +1,36 @@
+:root {
+    --primary-color-400: #3c495c;
+    --primary-color-800: #232d3b;
+}
+
+
+.btn-outline-primary {
+    color: var(--primary-color-400);
+    border-color: var(--primary-color-400);
+    border-color: white;
+    
+    border-radius: 0;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color-400);
+    border-color: var(--primary-color-400);;
+}
+
+.btn-outline-primary:active, .btn-outline-primary.active
+{
+    background-color: var(--primary-color-800) !important;
+}
+
+
+/* Top Menu - Selected item */
+.active.dropdown-item
+{
+    background-color: var(--primary-color-400);
+}
+
+/* Top Menu - Clicked item */
+.dropdown-item:active
+{
+    background-color: #3c495c;
+}
