@@ -4,6 +4,7 @@ import { ISellableItem } from "../dataDefinitions/sellableItem";
 import { Link } from "react-router-dom";
 import { ImagePaths } from "../library/imagesPaths";
 import { HelperProductTypes } from "../helpers/helperProductTypes";
+import { ProductTypeColor } from "../library/productTypeColor";
 
 interface ProductPreviewComponentParams {
   productID: number,
@@ -67,13 +68,20 @@ export function SellableItemPreviewComponent(
     <Link
       to={getSellableItemLink()}
       style={{ textDecoration: 'none', color: 'inherit' }}>
-      <div className="sellable-item-preview">
+      <div 
+        className="sellable-item-preview"
+        style={{
+            borderColor: ProductTypeColor.GetColor(sellableItem?.type)
+        }}
+    >
         {sellableItem &&
-          <div>
+          <div
+          >
             {renderImage()}
 
             <div style={{
-              padding: '0.5rem'
+              paddingTop: '0.0rem',
+              paddingInline: '0.5rem',
             }}>
 
               <div

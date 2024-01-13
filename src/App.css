@@ -1,3 +1,22 @@
+:root {
+    --accent-color: #e2e2e2;
+
+    /* Brincos*/
+    --product-type-color-1: #e7d876;
+    /* Colares*/
+    --product-type-color-2: #8bb248;
+    /* Pulseiras*/
+    --product-type-color-3: #a84c88;
+    /* Aneis*/
+    --product-type-color-5: #56b58d;
+    /* Alfinetes*/
+    --product-type-color-6: #744141;
+    /* Pendentes*/
+    --product-type-color-7: #2d334e;
+
+    
+}
+
 .App {
   text-align: center;
 }
@@ -13,33 +32,29 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header
+{
+    background-color: var(--accent-color);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+.bg-light
+{
+    background-color: var(--accent-color) !important;
 }
 
 .nav-link-custom {
   margin: 0 5px;
+  font-size: x-large;
+}
+
+.larger-text
+{
+    font-size: larger;
+}
+
+.dropdown-item
+{
+    font-size: larger;
 }
 
 .collection-name {
@@ -48,23 +63,26 @@
   margin: 0;
   font-size: 3rem;
   color: #212d44;
-  font-family: 'Quattrocento', serif;
+  /* font-family: 'Quattrocento', serif; */
+}
+
+.collection-description-holder
+{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    background-color: var(--accent-color);
+    padding: 3rem;
 }
 
 .collection-description {
   margin-bottom: 0rem;
-  line-height: 2rem;
+  line-height: 2.5rem;
   text-wrap: balance;
-
-  _font-size: 1.2rem;
-  _font-family: 'Vollkorn', serif;
-
-  _font-size: 1.2rem;
-  _font-family: 'Playfair Display', serif;
-
-  font-size: 1.2rem;
-  font-family: 'Quattrocento', serif;
-
+  
+  font-size: 1.5rem;
+  /* font-family: 'Quattrocento', serif; */
 }
 
 .collection-filters {
@@ -82,19 +100,22 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-
+  margin-bottom: 10rem;
 }
 
 .sellable-item-preview {
-  height: 24rem;
   cursor: pointer;
   align-items: center;
   justify-items: center;
+  border-left-width: 2px;
+  border-left-style: solid;
+  border-top-width: 2px;
+  border-top-style: solid;
 }
 
 .sellable-item-preview:hover {
-  background-color: beige;
-
+  background-color: var(--accent-color);
+  --background-color: purple;
 }
 
 .sellable-item-preview .image-holder {
@@ -131,6 +152,7 @@
   color: #808080;
   font-weight: 500;
   text-align: left;
+  margin-bottom: 0rem;
 }
 
 
@@ -143,18 +165,22 @@
 }
 
 
-.sellable-item .header {
+.sellable-item .sellable-item-header {
   margin-bottom: 4rem;
 }
 
 
 .sellable-item .type {
   text-align: left;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
 }
 
 .sellable-item .name {
   text-align: left;
+  font-size: 3.5rem;
+
 }
 
 .sellable-item .item-contents {
@@ -176,11 +202,7 @@
 .sellable-item .image-holder {
 
   max-width: 18rem;
-  --max-height: 18rem;
   min-width: 18rem;
-
-  /*object-fit: cover;*/
-  /*border: 1px solid orange;*/
 }
 
 .sellable-item .item-info {
@@ -191,11 +213,13 @@
 .sellable-item .item-description {
   text-align: start;
   line-height: 2em;
+  font-size: larger;
 }
 
 .sellable-item .item-price {
   text-align: start;
   font-weight: 600;
+  font-size: larger;
 }
 
 .sellable-item .variants-dropdown {
@@ -284,5 +308,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Quattrocento', serif;
+  /* font-family: 'Quattrocento', serif; */
+  font-family: 'Bellefair', serif;
+
 }

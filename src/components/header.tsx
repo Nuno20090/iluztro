@@ -34,7 +34,7 @@ export function HeaderComponent() {
   }
 
   const renderOutletsMenusItems = () => {
-    return outlets.map((page, index) => {
+    return outlets.map((page) => {
       return (
         <LinkContainer key={page.id} to={`/collection/${page.id}`}>
           <Nav.Link className="nav-link-custom">{page.name_en}</Nav.Link>
@@ -46,8 +46,12 @@ export function HeaderComponent() {
   return (
     <div
       style={{ padding: "1em" }}
-      className="bg-light">
-      <Navbar bg="light" expand="sm">
+      className="header"
+    >
+      <Navbar 
+      bg="light" 
+      expand="sm"
+      >
         <LinkContainer to="/">
           <Navbar.Brand>Iluztro</Navbar.Brand>
         </LinkContainer>

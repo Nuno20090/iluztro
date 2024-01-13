@@ -8,6 +8,7 @@ export const Collections: ICollection[] = [
     active: true,
     type: "Collection",
     order: 1,
+    image: "images/collections/marie/marie.png"
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ export const Collections: ICollection[] = [
     active: true,
     type: "Collection",
     order: 2,
+    image: "images/collections/marie/marie.png"
   },
   {
     id: 3,
@@ -24,6 +26,7 @@ export const Collections: ICollection[] = [
     active: true,
     type: "Collection",
     order: 3,
+    image: "images/collections/marie/marie.png"
   },
   {
     id: 4,
@@ -32,6 +35,7 @@ export const Collections: ICollection[] = [
     active: false,
     type: "Collection",
     order: 4,
+    image: "images/collections/marie/marie.png"
   },
   {
     id: 5,
@@ -40,6 +44,7 @@ export const Collections: ICollection[] = [
     active: true,
     type: "Collection",
     order: 5,
+    image: "images/collections/marie/marie.png"
   },
   {
     id: 6,
@@ -48,6 +53,7 @@ export const Collections: ICollection[] = [
     active: true,
     type: "Collection",
     order: 6,
+    image: "images/collections/marie/marie.png"
   },
   {
     id: 7,
@@ -56,6 +62,7 @@ export const Collections: ICollection[] = [
     active: true,
     type: "Collection",
     order: 7,
+    image: "images/collections/marie/marie.png"
   },
   {
     id: 8,
@@ -64,6 +71,7 @@ export const Collections: ICollection[] = [
     active: false,
     type: "Collection",
     order: 8,
+    image: "images/collections/marie/marie.png"
   },
   {
     id: 9,
@@ -72,6 +80,7 @@ export const Collections: ICollection[] = [
     active: true,
     type: "Collection",
     order: 9,
+    image: "images/collections/marie/marie.png"
   },
   {
     id: 10,
@@ -80,6 +89,7 @@ export const Collections: ICollection[] = [
     active: true,
     type: "Collection",
     order: 10,
+    image: "images/collections/marie/marie.png"
   },
   {
     id: 11,
@@ -88,6 +98,7 @@ export const Collections: ICollection[] = [
     active: true,
     type: "Collection",
     order: 11,
+    image: "images/collections/marie/marie.png"
   },
   {
     id: 12,
@@ -96,6 +107,7 @@ export const Collections: ICollection[] = [
     active: true,
     type: "Collection",
     order: 12,
+    image: "images/collections/marie/marie.png"
   },
 
   {
@@ -104,6 +116,7 @@ export const Collections: ICollection[] = [
     active: false,
     type: "Outlet",
     order: 2,
+    image: "images/collections/marie/marie.png"
   },
   {
     id: 102,
@@ -111,6 +124,7 @@ export const Collections: ICollection[] = [
     active: false,
     type: "Outlet",
     order: 1,
+    image: "images/collections/marie/marie.png"
   },
 ];
 

@@ -7,6 +7,7 @@ import { ISellableItem } from "../dataDefinitions/sellableItem";
 import { IProduct } from "../dataDefinitions/product";
 import { HelperProductTypes } from "../helpers/helperProductTypes";
 import { SellableItemImages } from "../components/sellableItemImages";
+import { ProductTypeColor } from "../library/productTypeColor";
 
 export function ProductPage() {
 
@@ -82,12 +83,13 @@ export function ProductPage() {
 
         return (
             <Dropdown
-                className="w-100 variants-dropdown"
+                className="w-100 variants-dropdown larger-text"
                 onSelect={handleVariantSelect}
             >
                 <Dropdown.Toggle
                     className="product-variant-button"
-                    variant="success"
+                    style={{fontSize: "1.2rem"}}
+                    variant="light"
                     id="dropdown-basic"
                 >
                     {getSelectedVariantName()}
@@ -115,8 +117,13 @@ export function ProductPage() {
             {productInfo && sellableItem &&
                 <div className="contents">
 
-                    <div className="header">
-                        <h4 className="type">
+                    <div className="sellable-item-header">
+                        <h4 
+                        className="type"
+                        style={{
+                            borderBottomColor: ProductTypeColor.GetColor(productInfo.type)
+                        }}
+                        >
                             {HelperProductTypes.GetProductTypeNameSingular(productInfo.type)}
                         </h4>
                         <h1 className="name">
@@ -135,7 +142,6 @@ export function ProductPage() {
                         </div>
 
                         <div className="item-info">
-
                             {renderProductVariantsDropdown()}
 
                             <p className="item-description">

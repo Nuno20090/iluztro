@@ -4,7 +4,7 @@ export const ProductTypes: IProductType[] =
     [
         {
             type: ProductType.Brincos,
-            name_singular_en: 'Earring',
+            name_singular_en: 'Earrings',
             name_plural_en: 'Earrings',
             order: 1
         },

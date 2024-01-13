@@ -23,7 +23,6 @@ export function ProductComponent(
         backgroundColor: "orange",
         width: "200px",
         height: "200px",
-
       }}>
 
       </div>

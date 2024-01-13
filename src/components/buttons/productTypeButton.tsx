@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
-import { ProductType } from "../../dataDefinitions/productType";
 import { ProductTypeFilter } from "../../dataDefinitions/collectionFilter";
+import { ProductTypeColor } from "../../library/productTypeColor";
 
 interface ProductTypeButtonParams {
   label: string;
@@ -22,6 +22,12 @@ export function ProductTypeButton({
     <Button
       variant={'outline-primary'}
       onClick={handleClick}
+      className="larger-text"
+      style={{
+        borderBottomStyle: "solid",
+        borderBottomWidth: "3px",
+        borderBottomColor: ProductTypeColor.GetColor(productType)
+      }}
     >
       {label}
     </Button>

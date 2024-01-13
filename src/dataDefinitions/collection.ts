@@ -5,4 +5,5 @@ export interface ICollection {
     active: boolean;
     type: "Collection" | "Outlet";
     order: number;
+    image: string;
   }
