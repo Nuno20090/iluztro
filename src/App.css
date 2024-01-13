@@ -73,7 +73,8 @@
     text-align: center;
     width: 100%;
     background-color: var(--accent-color);
-    padding: 3rem;
+    height: fit-content;
+    --padding: 3rem;
 }
 
 .collection-description {

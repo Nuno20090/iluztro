@@ -9,6 +9,7 @@ import { ProductTypeFilter } from "../dataDefinitions/collectionFilter";
 import { SellableItemPreviewComponent } from "../components/sellableItemPreview";
 import { ISellableItem } from "../dataDefinitions/sellableItem";
 import { ImagePaths } from "../library/imagesPaths";
+import { relative } from "path";
 
 export function CollectionPage() {
 
@@ -70,20 +71,65 @@ export function CollectionPage() {
           </h1>
 
           {collectionPageInfo.description_en &&
+
             <div
-              className="collection-description-holder"
-            >
-              <img
+              style={{ position: "relative" }}>
+
+              {/* This is just so the div is rendered with the correct dimmensions */}
+              <div
+                style={{ padding: "3rem" }}>
+                <p className="collection-description">
+                  {collectionPageInfo.description_en}
+                </p>
+              </div>
+
+              {/* This is a div to show the image */}
+              <div
+                className="collection-description-holder"
+                style={{
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  width: "100%",
+                  height: "100%",
+                  backgroundImage: `url(${ImagePaths.get(collectionPageInfo.image)})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition:"center center",
+                  filter: 'saturate(10%) contrast(100%) brightness(60%) opacity(20%)',
+                }}
+              />
+              
+              {/* This is the div that will actually show the text */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  width: "100%",
+                  height: "100%",
+                }}>
+
+                <div
+                  style={{ padding: "3rem" }}>
+                  <p className="collection-description">
+                    {collectionPageInfo.description_en}
+                  </p>
+                </div>
+
+              </div>
+
+              
+
+
+              {/* <img
               src={ImagePaths.get(collectionPageInfo.image)}
               alt={""}
               className="image-contained"
               width="100%"
               height="100%"
-              />
+              /> */}
 
-              <p className="collection-description">
-                {collectionPageInfo.description_en}
-              </p>
+
             </div>
           }
 
