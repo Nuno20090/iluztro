@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { HelperProducts } from "../helpers/helperProducts";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { Dropdown } from 'react-bootstrap';
 import { ISellableItem } from "../dataDefinitions/sellableItem";
 import { IProduct } from "../dataDefinitions/product";
@@ -9,7 +9,11 @@ import { HelperProductTypes } from "../helpers/helperProductTypes";
 import { SellableItemImages } from "../components/sellableItemImages";
 import { ProductTypeColor } from "../library/productTypeColor";
 
-export function ProductPage() {
+interface ProductPageParams {
+    addCartItem: (productID: number, variantID: number | undefined) => void;
+}
+
+export function ProductPage({ addCartItem }: ProductPageParams) {
 
     const { productID } = useParams();
     const location = useLocation();
@@ -88,7 +92,7 @@ export function ProductPage() {
             >
                 <Dropdown.Toggle
                     className="product-variant-button"
-                    style={{fontSize: "1.2rem"}}
+                    style={{ fontSize: "1.2rem" }}
                     variant="light"
                     id="dropdown-basic"
                 >
@@ -118,11 +122,11 @@ export function ProductPage() {
                 <div className="contents">
 
                     <div className="sellable-item-header">
-                        <h4 
-                        className="type"
-                        style={{
-                            borderBottomColor: ProductTypeColor.GetColor(productInfo.type)
-                        }}
+                        <h4
+                            className="type"
+                            style={{
+                                borderBottomColor: ProductTypeColor.GetColor(productInfo.type)
+                            }}
                         >
                             {HelperProductTypes.GetProductTypeNameSingular(productInfo.type)}
                         </h4>
@@ -151,6 +155,18 @@ export function ProductPage() {
                             <p className="item-price">
                                 {`${productInfo.price_eur}€`}
                             </p>
+
+                            <Button
+                                variant={'outline-primary'}
+                                onClick={() => { addCartItem(productInfo.id, variantID) }}
+                                className="larger-text"
+                                style={{
+                                    width: "100%",
+                                    border: "1px solid black"
+                                }}
+                            >
+                                Add to Cart
+                            </Button>
                         </div>
                     </div>
                 </div>

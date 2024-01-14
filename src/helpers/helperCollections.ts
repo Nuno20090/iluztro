@@ -23,7 +23,7 @@ export class HelperCollections {
     ).sort((a, b) => a.order - b.order);
   }
 
-  public static GetCollectionPage(collectionID: number): ICollection {
+  public static GetCollectionInfo(collectionID: number): ICollection {
     return Collections.find(page => page.id === collectionID)!;
   }
 

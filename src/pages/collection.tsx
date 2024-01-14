@@ -26,7 +26,7 @@ export function CollectionPage() {
       return;
     }
 
-    setCollectionPageInfo(HelperCollections.GetCollectionPage(Number.parseInt(collectionID)));
+    setCollectionPageInfo(HelperCollections.GetCollectionInfo(Number.parseInt(collectionID)));
 
     let sellableItems = HelperProducts.GetSellableItems(Number.parseInt(collectionID));
 

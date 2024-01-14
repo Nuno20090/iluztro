@@ -64,7 +64,7 @@ export class HelperProducts {
     let variant = product.variants?.find(variant => variant.id === variantID);
 
     if (variant === undefined) {
-      throw new Error("variant is null");
+      throw new Error(`variant is null. productID: ${productID}, variantID: ${variantID}`);
     }
 
     return HelperProducts.CreateSellableItemFromVariant(product, variant);

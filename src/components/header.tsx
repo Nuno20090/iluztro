@@ -1,10 +1,16 @@
-import { Dropdown, Nav, Navbar } from "react-bootstrap";
+import { Badge, Dropdown, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { HelperCollections } from "../helpers/helperCollections";
 import { useEffect, useState } from "react";
 import { ICollection } from "../dataDefinitions/collection";
 
-export function HeaderComponent() {
+interface HeaderComponentParams {
+  cartItemsCount: number;
+}
+
+export function HeaderComponent({
+  cartItemsCount
+}: HeaderComponentParams) {
 
   const [collections, setCollections] = useState<ICollection[]>([]);
   const [outlets, setOutlets] = useState<ICollection[]>([]);
@@ -48,9 +54,9 @@ export function HeaderComponent() {
       style={{ padding: "1em" }}
       className="header"
     >
-      <Navbar 
-      bg="light" 
-      expand="sm"
+      <Navbar
+        bg="light"
+        expand="sm"
       >
         <LinkContainer to="/">
           <Navbar.Brand>Iluztro</Navbar.Brand>
@@ -71,8 +77,22 @@ export function HeaderComponent() {
             <LinkContainer to="/contacts">
               <Nav.Link className="nav-link-custom">Contacts</Nav.Link>
             </LinkContainer>
+
+            <LinkContainer to="/cart">
+              <Nav.Link className="nav-link-custom">
+                Cart
+
+                {cartItemsCount > 0 &&
+                  <>
+                    {" "}
+                    <Badge >{cartItemsCount}</Badge>
+                  </>
+                }
+              </Nav.Link>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
+
       </Navbar>
     </div>
   );
