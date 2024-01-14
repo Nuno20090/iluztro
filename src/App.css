@@ -1,20 +1,20 @@
 :root {
-    --accent-color: #e2e2e2;
+  --accent-color: #e2e2e2;
 
-    /* Brincos*/
-    --product-type-color-1: #e7d876;
-    /* Colares*/
-    --product-type-color-2: #8bb248;
-    /* Pulseiras*/
-    --product-type-color-3: #a84c88;
-    /* Aneis*/
-    --product-type-color-5: #56b58d;
-    /* Alfinetes*/
-    --product-type-color-6: #744141;
-    /* Pendentes*/
-    --product-type-color-7: #2d334e;
+  /* Brincos*/
+  --product-type-color-1: #e7d876;
+  /* Colares*/
+  --product-type-color-2: #8bb248;
+  /* Pulseiras*/
+  --product-type-color-3: #a84c88;
+  /* Aneis*/
+  --product-type-color-5: #56b58d;
+  /* Alfinetes*/
+  --product-type-color-6: #744141;
+  /* Pendentes*/
+  --product-type-color-7: #2d334e;
 
-    
+
 }
 
 .App {
@@ -32,14 +32,12 @@
   }
 }
 
-.header
-{
-    background-color: var(--accent-color);
+.header {
+  background-color: var(--accent-color);
 }
 
-.bg-light
-{
-    background-color: var(--accent-color) !important;
+.bg-light {
+  background-color: var(--accent-color) !important;
 }
 
 .nav-link-custom {
@@ -47,14 +45,12 @@
   font-size: x-large;
 }
 
-.larger-text
-{
-    font-size: larger;
+.larger-text {
+  font-size: larger;
 }
 
-.dropdown-item
-{
-    font-size: larger;
+.dropdown-item {
+  font-size: larger;
 }
 
 .collection-name {
@@ -66,22 +62,21 @@
   /* font-family: 'Quattrocento', serif; */
 }
 
-.collection-description-holder
-{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    background-color: var(--accent-color);
-    height: fit-content;
-    --padding: 3rem;
+.collection-description-holder {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  background-color: var(--accent-color);
+  height: fit-content;
+  --padding: 3rem;
 }
 
 .collection-description {
   margin-bottom: 0rem;
   line-height: 2.5rem;
   text-wrap: balance;
-  
+
   font-size: 1.5rem;
   /* font-family: 'Quattrocento', serif; */
 }
@@ -181,7 +176,6 @@
 .sellable-item .name {
   text-align: left;
   font-size: 3.5rem;
-
 }
 
 .sellable-item .item-contents {

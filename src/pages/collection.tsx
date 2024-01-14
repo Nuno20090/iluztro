@@ -78,7 +78,8 @@ export function CollectionPage() {
               {/* This is just so the div is rendered with the correct dimmensions */}
               <div
                 style={{ padding: "3rem" }}>
-                <p className="collection-description">
+                <p className="collection-description"
+                  style={{ color: "transparent" }}>
                   {collectionPageInfo.description_en}
                 </p>
               </div>
@@ -94,11 +95,11 @@ export function CollectionPage() {
                   height: "100%",
                   backgroundImage: `url(${ImagePaths.get(collectionPageInfo.image)})`,
                   backgroundSize: 'cover',
-                  backgroundPosition:"center center",
+                  backgroundPosition: "center center",
                   filter: 'saturate(10%) contrast(100%) brightness(60%) opacity(20%)',
                 }}
               />
-              
+
               {/* This is the div that will actually show the text */}
               <div
                 style={{
@@ -115,21 +116,7 @@ export function CollectionPage() {
                     {collectionPageInfo.description_en}
                   </p>
                 </div>
-
               </div>
-
-              
-
-
-              {/* <img
-              src={ImagePaths.get(collectionPageInfo.image)}
-              alt={""}
-              className="image-contained"
-              width="100%"
-              height="100%"
-              /> */}
-
-
             </div>
           }
 
