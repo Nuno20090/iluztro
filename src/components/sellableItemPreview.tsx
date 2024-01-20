@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { ImagePaths } from "../library/imagesPaths";
 import { HelperProductTypes } from "../helpers/helperProductTypes";
 import { ProductTypeColor } from "../library/productTypeColor";
+import { SellableItemPath } from "../library/sellableItemLink";
 
 interface ProductPreviewComponentParams {
   productID: number,
@@ -20,19 +21,6 @@ export function SellableItemPreviewComponent(
   useEffect(() => {
     setSellableItem(HelperProducts.GetSellableItem(productID, variantID));
   }, [productID, variantID])
-
-  const getSellableItemLink = () => {
-    if (!sellableItem) {
-      return "";
-    }
-
-    if (sellableItem.variantID === undefined) {
-      return `/product/${sellableItem.productID}`;
-    }
-    else {
-      return `/product/${sellableItem.productID}?variantID=${sellableItem.variantID}`;
-    }
-  }
 
   const renderImage = () => {
 
@@ -66,14 +54,14 @@ export function SellableItemPreviewComponent(
 
   return (
     <Link
-      to={getSellableItemLink()}
+      to={SellableItemPath.getPath(sellableItem)}
       style={{ textDecoration: 'none', color: 'inherit' }}>
-      <div 
+      <div
         className="sellable-item-preview"
         style={{
-            borderColor: ProductTypeColor.GetColor(sellableItem?.type)
+          borderColor: ProductTypeColor.GetColor(sellableItem?.type)
         }}
-    >
+      >
         {sellableItem &&
           <div
           >

@@ -4,6 +4,8 @@ import { HelperProducts } from "../helpers/helperProducts";
 import { useEffect, useState } from "react";
 import { HelperCollections } from "../helpers/helperCollections";
 import { ImagePaths } from "../library/imagesPaths";
+import { SellableItemPath } from "../library/sellableItemLink";
+import { Link } from "react-router-dom";
 
 interface CartItemParams {
     productID: number;
@@ -83,25 +85,27 @@ export function CartItem({
                         flexDirection: "row",
                         width: "100%",
                         justifyContent: "space-between",
-                        //backgroundColor: "lightgray",
-                        //border: "2px solid red"
                         alignItems: "flex-end"
-
                     }}>
 
-                    <div
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "flex-start",
-                        }}>
-                        <div>
-                            {HelperCollections.GetCollectionInfo(sellableItem.collectionID).name_en}
+                    <Link
+                        to={SellableItemPath.getPath(sellableItem)}
+                        style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "flex-start",
+                            }}>
+                            <div>
+                                {HelperCollections.GetCollectionInfo(sellableItem.collectionID).name_en}
+                            </div>
+                            <h2>
+                                {sellableItem.productName_en}
+                            </h2>
                         </div>
-                        <h2>
-                            {sellableItem.productName_en}
-                        </h2>
-                    </div>
+
+                    </Link>
 
                     <h3>
                         {sellableItem.price_eur}€
@@ -113,20 +117,25 @@ export function CartItem({
                     style={{
                         display: "flex",
                         flexDirection: "row",
-                        //border: "2px solid blue",
                         justifyContent: "space-between",
                         alignItems: "end",
                     }}
                 >
-                    {renderImage()}
+                    <Link
+                        to={SellableItemPath.getPath(sellableItem)}
+                        style={{ textDecoration: 'none', color: 'inherit' }}>
+
+                        {renderImage()}
+                    </Link>
 
                     <div>
 
                         <Button
-                            variant={'outline-primary'}
+                            variant={'primary'}
                             onClick={() => {
                                 removeCartItem(productID, variantID);
                             }}
+                            className="larger-text"
                         >
                             Remove
                             <i className="bi bi-5-circle"></i>
@@ -136,7 +145,5 @@ export function CartItem({
             </div>
         }
     </div>
-
-
 }
 
