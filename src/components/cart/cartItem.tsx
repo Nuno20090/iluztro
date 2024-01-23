@@ -1,16 +1,17 @@
 import { Button } from "react-bootstrap";
-import { ISellableItem } from "../dataDefinitions/sellableItem";
-import { HelperProducts } from "../helpers/helperProducts";
+import { ISellableItem } from "../../dataDefinitions/sellableItem";
+import { HelperProducts } from "../../helpers/helperProducts";
 import { useEffect, useState } from "react";
-import { HelperCollections } from "../helpers/helperCollections";
-import { ImagePaths } from "../library/imagesPaths";
-import { SellableItemPath } from "../library/sellableItemLink";
+import { HelperCollections } from "../../helpers/helperCollections";
+import { ImagePaths } from "../../library/imagesPaths";
+import { SellableItemPath } from "../../library/sellableItemLink";
 import { Link } from "react-router-dom";
+import { ICartItem } from "../../dataDefinitions/cartItem";
 
 interface CartItemParams {
     productID: number;
     variantID: number | undefined;
-    removeCartItem: (productID: number, variantID: number | undefined) => void;
+    removeCartItem: (cartItem: ICartItem) => void;
 }
 
 export function CartItem({
@@ -133,7 +134,7 @@ export function CartItem({
                         <Button
                             variant={'primary'}
                             onClick={() => {
-                                removeCartItem(productID, variantID);
+                                removeCartItem({ productID, variantID });
                             }}
                             className="larger-text"
                         >

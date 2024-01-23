@@ -9,7 +9,6 @@ import { ProductTypeFilter } from "../dataDefinitions/collectionFilter";
 import { SellableItemPreviewComponent } from "../components/sellableItemPreview";
 import { ISellableItem } from "../dataDefinitions/sellableItem";
 import { ImagePaths } from "../library/imagesPaths";
-import { relative } from "path";
 
 export function CollectionPage() {
 

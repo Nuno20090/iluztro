@@ -7,15 +7,17 @@ import { HomePage } from './pages/home';
 import { CollectionPage } from './pages/collection';
 import { ContactsPage } from './pages/contacts';
 import { ProductPage } from './pages/product';
+import { CartPage } from './pages/cart';
+import { ICartItem } from './dataDefinitions/cartItem';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './custom.css';
 import './App.css';
-import { CartPage } from './pages/cart';
+import { CheckoutPage } from './pages/checkout';
 
 function App() {
 
-  const [cartItems, setCartItems] = useState<{ productID: number, variantID: number | undefined }[]>([
+  const [cartItems, setCartItems] = useState<ICartItem[]>([
     { productID: 1013, variantID: 10131 },
     { productID: 1013, variantID: 10132 },
     { productID: 1012, variantID: undefined },
@@ -28,9 +30,12 @@ function App() {
   const clearCartItems = () => {
     setCartItems([]);
   }
-  const removeCartItem = (productID: number, variantID?: number) => {
-    const newCartItems = cartItems.filter((cartItem) => {
-      return cartItem.productID !== productID || cartItem.variantID !== variantID;
+  const removeCartItem = (cartItem: ICartItem) => {
+    const newCartItems = cartItems.filter((itemInCart) => {
+      return (
+        itemInCart.productID !== cartItem.productID ||
+        itemInCart.variantID !== cartItem.variantID
+      );
     });
     setCartItems(newCartItems);
   }
@@ -68,12 +73,25 @@ function App() {
 
           <Route
             path="/cart"
-            element={<CartPage
-              cartItems={cartItems}
-              clearCartItems={clearCartItems}
-              removeCartItem={removeCartItem}
-            />}
+            element={
+              <CartPage
+                cartItems={cartItems}
+                clearCartItems={clearCartItems}
+                removeCartItem={removeCartItem}
+              />
+            }
           />
+
+          <Route
+            path="/checkout"
+            element={
+              <CheckoutPage
+                cartItems={cartItems}
+                clearCartItems={clearCartItems}
+              />
+            }
+          />
+
         </Routes>
       </Router>
     </div>

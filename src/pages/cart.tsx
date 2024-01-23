@@ -1,11 +1,13 @@
 import { Button, Container } from "react-bootstrap";
-import { CartItem } from "../components/cartItem";
-import { PurchaseDetails } from "../components/purchaseDetails/purchaseDetails";
+import { CartItem } from "../components/cart/cartItem";
+import { ICartItem } from "../dataDefinitions/cartItem";
+import { CartTotal } from "../components/cart/cartTotal";
+import { useNavigate } from 'react-router-dom';
 
 interface CartPageParams {
-  cartItems: { productID: number, variantID: number | undefined }[];
+  cartItems: ICartItem[];
   clearCartItems: () => void;
-  removeCartItem: (productID: number, variantID: number | undefined) => void;
+  removeCartItem: (cartItem: ICartItem) => void;
 }
 
 export function CartPage({
@@ -13,6 +15,8 @@ export function CartPage({
   clearCartItems,
   removeCartItem
 }: CartPageParams) {
+
+  let navigate = useNavigate();
 
   return <div>
 
@@ -33,27 +37,48 @@ export function CartPage({
           >
             {
               cartItems.map((cartItem, index) => {
-                return <>
-                  <CartItem
-                    key={index}
-                    productID={cartItem.productID}
-                    variantID={cartItem.variantID}
-                    removeCartItem={removeCartItem}
-                  />
-                </>
+                return <CartItem
+                  key={index}
+                  productID={cartItem.productID}
+                  variantID={cartItem.variantID}
+                  removeCartItem={removeCartItem}
+                />
               })
             }
           </div>
 
-          <Button
-            variant={'primary'}
-            className="larger-text"
-            onClick={() => {
-              clearCartItems();
-            }}
-          >
-            Clear Cart
-          </Button>
+          <CartTotal
+            cartItems={cartItems}
+          />
+
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '2rem',
+              marginTop: '2rem',
+              width: '100%',
+            }}>
+            <Button
+              variant={'primary'}
+              className="larger-text"
+              onClick={() => {
+                clearCartItems();
+              }}
+            >
+              Clear Cart
+            </Button>
+
+            <Button
+              variant={'primary'}
+              className="larger-text"
+              onClick={() => {
+                navigate('/checkout');
+              }}
+            >
+              Proceed to Checkout
+            </Button>
+          </div>
         </>
       }
       {
@@ -63,7 +88,12 @@ export function CartPage({
         </div>
       }
 
-      <PurchaseDetails />
+      <div
+        style={{
+          marginTop: '5rem',
+        }}
+      >
+      </div>
 
     </Container>
 
