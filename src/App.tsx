@@ -9,11 +9,11 @@ import { ContactsPage } from './pages/contacts';
 import { ProductPage } from './pages/product';
 import { CartPage } from './pages/cart';
 import { ICartItem } from './dataDefinitions/cartItem';
+import { CheckoutPage } from './pages/checkout';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './custom.css';
 import './App.css';
-import { CheckoutPage } from './pages/checkout';
 
 function App() {
 
