@@ -9,6 +9,7 @@ import { BankTransferInstructions } from "../components/checkout/bankTransferIns
 import { PurchaseForm } from "../components/checkout/purchaseForm";
 import { BuyerLocation } from "../library/order";
 import { PaymentDetails } from "../components/checkout/paymentDetails";
+import { useNavigate } from "react-router-dom";
 
 interface CheckoutPageParams {
   cartItems: ICartItem[];
@@ -16,6 +17,8 @@ interface CheckoutPageParams {
 }
 
 export function CheckoutPage({ cartItems, clearCartItems }: CheckoutPageParams) {
+
+  const navigate = useNavigate();
 
   const [buyerName, setBuyerName] = useState<string>("");
   const [buyerMail, setBuyerMail] = useState<string>("");
@@ -40,6 +43,9 @@ export function CheckoutPage({ cartItems, clearCartItems }: CheckoutPageParams) 
     if (formDataIsValid) {
       console.log("Form is valid");
       //sendTestMail();
+
+      clearCartItems();
+      navigate("/thankyou");
     }
     else {
       console.log("Form is invalid");
@@ -138,7 +144,7 @@ export function CheckoutPage({ cartItems, clearCartItems }: CheckoutPageParams) 
                 type="submit"
                 form="purchaseForm"
                 className='finalize-purchase'
-              //onClick={handleFinalizePurchase}
+                onClick={() => handleFinalizePurchase}
               >Finalize purchase</Button>
             </div>
           }

@@ -8,12 +8,18 @@ import { IProduct } from "../dataDefinitions/product";
 import { HelperProductTypes } from "../helpers/helperProductTypes";
 import { SellableItemImages } from "../components/sellableItemImages";
 import { ProductTypeColor } from "../library/productTypeColor";
+import { ICartItem } from "../dataDefinitions/cartItem";
 
 interface ProductPageParams {
     addCartItem: (productID: number, variantID: number | undefined) => void;
+    cartItems: ICartItem[];
 }
 
-export function ProductPage({ addCartItem }: ProductPageParams) {
+export function ProductPage(
+    {
+        addCartItem,
+        cartItems
+    }: ProductPageParams) {
 
     const { productID } = useParams();
     const location = useLocation();
@@ -21,6 +27,8 @@ export function ProductPage({ addCartItem }: ProductPageParams) {
 
     const [productInfo, setProductInfo] = useState<IProduct | undefined>(undefined);
     const [sellableItem, setSellableItem] = useState<ISellableItem | undefined>(undefined);
+    const [isProductInCart, setIsProductInCart] = useState<boolean>(false);
+    const [inCartMessage, setInCartMessage] = useState<string>("Already in cart");
 
     const getQueryParam = (param: string) => {
         return new URLSearchParams(location.search).get(param);
@@ -53,6 +61,21 @@ export function ProductPage({ addCartItem }: ProductPageParams) {
 
     }, [productID]);
 
+    useEffect(() => {
+
+        if (productInfo === undefined) {
+            return;
+        }
+
+        if (cartItems === undefined) {
+            return;
+        }
+
+        const productInCart = cartItems.find((cartItem) => cartItem.productID === productInfo.id);
+        setIsProductInCart(productInCart !== undefined);
+
+    }, [cartItems, productInfo]);
+
     const handleVariantSelect = (eventKey: string | null) => {
         if (eventKey === null) {
             return;
@@ -70,6 +93,12 @@ export function ProductPage({ addCartItem }: ProductPageParams) {
         const variant = productInfo.variants.find((variant) => variant.id === variantID);
         return variant ? variant.name_en : "";
     }
+
+    const handleAddToCart = (productInfo: IProduct) => {
+        addCartItem(productInfo.id, variantID);
+        setInCartMessage("Added to cart");
+        setIsProductInCart(true);
+    };
 
     const renderProductVariantsDropdown = () => {
 
@@ -156,17 +185,34 @@ export function ProductPage({ addCartItem }: ProductPageParams) {
                                 {`${productInfo.price_eur}€`}
                             </p>
 
-                            <Button
-                                variant={'outline-primary'}
-                                onClick={() => { addCartItem(productInfo.id, variantID) }}
-                                className="larger-text"
-                                style={{
-                                    width: "100%",
-                                    border: "1px solid black"
-                                }}
-                            >
-                                Add to Cart
-                            </Button>
+                            {isProductInCart && <p className="in-cart">
+                                <Button
+                                    disabled
+                                    variant={'outline-primary'}
+                                    className="larger-text"
+                                    style={{
+                                        width: "100%",
+                                        border: "1px solid black"
+                                    }}
+                                >
+                                    {inCartMessage}
+                                </Button>
+                            </p>}
+                            {isProductInCart === false &&
+                                <Button
+                                    variant={'outline-primary'}
+                                    onClick={() => {
+                                        handleAddToCart(productInfo);
+                                    }}
+                                    className="larger-text"
+                                    style={{
+                                        width: "100%",
+                                        border: "1px solid black"
+                                    }}
+                                >
+                                    Add to Cart
+                                </Button>
+                            }
                         </div>
                     </div>
                 </div>

@@ -36,6 +36,10 @@
     border-radius: 0;
 }
 
+.btn-outline-primary:disabled {
+    color: grey;
+}
+
 .btn-outline-primary:hover {
     background-color: var(--primary-color-400);
     border-color: var(--primary-color-400);

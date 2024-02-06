@@ -37,7 +37,7 @@ export function PaymentDetails({
                     <th>Amount</th>
                 </tr>
                 <tr>
-                    <td>Items Cost</td>
+                    <td>Items</td>
                     <td>{itemsCost}€</td>
                 </tr>
                 <tr>

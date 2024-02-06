@@ -10,6 +10,7 @@ import { ProductPage } from './pages/product';
 import { CartPage } from './pages/cart';
 import { ICartItem } from './dataDefinitions/cartItem';
 import { CheckoutPage } from './pages/checkout';
+import { ThankYouPage } from './pages/thankyou';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './custom.css';
@@ -63,12 +64,18 @@ function App() {
             path="/product/:productID"
             element={<ProductPage
               addCartItem={addCartItem}
+              cartItems={cartItems}
             />}
           />
 
           <Route
             path="/contacts"
             element={<ContactsPage />}
+          />
+
+          <Route
+            path="/thankyou"
+            element={<ThankYouPage />}
           />
 
           <Route
