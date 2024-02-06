@@ -82,7 +82,7 @@ export class HelperProducts {
 
       type: product.type,
 
-      price_eur: product.price_eur,
+      price_eur: product.price_eur || 0,
       measures: product.measures,
 
       photos: product.photos
@@ -101,7 +101,7 @@ export class HelperProducts {
       description_en: variant.description_en || product.description_en,
 
       type: product.type,
-      price_eur: variant.price_eur || product.price_eur,
+      price_eur: variant.price_eur || product.price_eur || 0,
       measures: variant.measures || product.measures,
       photos: variant.photos || product.photos
     };

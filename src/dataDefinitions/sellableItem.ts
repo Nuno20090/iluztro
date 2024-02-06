@@ -13,7 +13,7 @@ export interface ISellableItem {
 
     type: ProductType;
 
-    price_eur?: number;
+    price_eur: number;
     measures?: IMeasurement;
 
     photos?: string[];
