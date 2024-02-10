@@ -351,6 +351,10 @@
   width: 100%;
 }
 
+.finalize-purchase:hover {
+  background-color: var(--primary-color-800);
+}
+
 .bank-transfer {
   fill: yellow !important;
 }
