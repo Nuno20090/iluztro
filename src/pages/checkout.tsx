@@ -81,7 +81,7 @@ export function CheckoutPage({ cartItems, clearCartItems }: CheckoutPageParams) 
   }
   const handlePaymentSelection = (paymentMethod: "BT" | "MbWay") => {
     setPaymentMethod(paymentMethod);
-    scrollToFinalizePurchaseArea();
+    setTimeout(scrollToFinalizePurchaseArea, 100);
   }
 
   return (
