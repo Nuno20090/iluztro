@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import { ICartItem } from "../dataDefinitions/cartItem";
-import emailjs from '@emailjs/browser';
 import { MBWayButton } from "../components/checkout/mbwayButton";
 import { MBWayInstructions } from "../components/checkout/mbwayInstructions";
 import { BankTransferButton } from "../components/checkout/bankTransferButton";
@@ -10,6 +9,7 @@ import { PurchaseForm } from "../components/checkout/purchaseForm";
 import { BuyerLocation } from "../library/order";
 import { PaymentDetails } from "../components/checkout/paymentDetails";
 import { useNavigate } from "react-router-dom";
+import { OrderMail } from "../library/orderMail";
 
 interface CheckoutPageParams {
   cartItems: ICartItem[];
@@ -26,7 +26,7 @@ export function CheckoutPage({ cartItems, clearCartItems }: CheckoutPageParams) 
   const [buyerLocation, setBuyerLocation] = useState<BuyerLocation>("Portugal");
   const [buyerInstructions, setBuyerInstructions] = useState<string>("");
 
-  const [paymentMethod, setPaymentMethod] = useState<"BT" | "MbWay" | undefined>();
+  const [paymentMethod, setPaymentMethod] = useState<"Bank Transfer" | "MbWay" | undefined>();
 
   const [validated, setValidated] = useState(false);
 
@@ -43,9 +43,18 @@ export function CheckoutPage({ cartItems, clearCartItems }: CheckoutPageParams) 
     setValidated(true);
 
     const formDataIsValid = form.checkValidity();
+
     if (formDataIsValid) {
-      console.log("Form is valid");
-      //sendTestMail();
+
+      OrderMail.sendOrderMail(
+        buyerName,
+        buyerMail,
+        buyerAddress,
+        buyerLocation,
+        buyerInstructions,
+        cartItems,
+        paymentMethod!
+      );
 
       clearCartItems();
       navigate("/thankyou");
@@ -56,30 +65,10 @@ export function CheckoutPage({ cartItems, clearCartItems }: CheckoutPageParams) 
     }
   }
 
-  const sendTestMail = async () => {
-
-    const paramA = "paramA";
-    const paramB = "paramB";
-    const paramC = "paramC";
-
-    const result = await emailjs.send(
-      "service_b75c7mf",
-      "template_cpuwrrq",
-      {
-        param_a: paramA,
-        param_b: paramB,
-        paramC: paramC,
-      },
-      "E_UkF_2jrxNy73-y6"
-    );
-
-    console.log(result.status + " : " + result.text);
-  }
-
   const scrollToFinalizePurchaseArea = () => {
     finalizePurchaseAreaRef.current?.scrollIntoView({ behavior: "smooth" });
   }
-  const handlePaymentSelection = (paymentMethod: "BT" | "MbWay") => {
+  const handlePaymentSelection = (paymentMethod: "Bank Transfer" | "MbWay") => {
     setPaymentMethod(paymentMethod);
     setTimeout(scrollToFinalizePurchaseArea, 100);
   }
@@ -134,7 +123,7 @@ export function CheckoutPage({ cartItems, clearCartItems }: CheckoutPageParams) 
               className="payment-methods"
             >
               <BankTransferButton
-                onSelected={() => handlePaymentSelection("BT")}
+                onSelected={() => handlePaymentSelection("Bank Transfer")}
               />
 
               <MBWayButton
@@ -143,14 +132,14 @@ export function CheckoutPage({ cartItems, clearCartItems }: CheckoutPageParams) 
             </div>
           </div>
 
-          {paymentMethod === "BT" &&
+          {paymentMethod === "Bank Transfer" &&
             <BankTransferInstructions />
           }
           {paymentMethod === "MbWay" &&
             <MBWayInstructions />
           }
 
-          {(paymentMethod === "BT" ||
+          {(paymentMethod === "Bank Transfer" ||
             paymentMethod === "MbWay") &&
             <div
               ref={finalizePurchaseAreaRef}
