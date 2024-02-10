@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import { ICartItem } from "../dataDefinitions/cartItem";
 import emailjs from '@emailjs/browser';
@@ -30,6 +30,9 @@ export function CheckoutPage({ cartItems, clearCartItems }: CheckoutPageParams) 
 
   const [validated, setValidated] = useState(false);
 
+  const finalizePurchaseAreaRef = useRef<HTMLDivElement>(null);
+  const buyerDetailsAreaRef = useRef<HTMLDivElement>(null);
+
   const handleFinalizePurchase = (event: React.FormEvent<HTMLFormElement>) => {
 
     const form = event.currentTarget;
@@ -49,6 +52,7 @@ export function CheckoutPage({ cartItems, clearCartItems }: CheckoutPageParams) 
     }
     else {
       console.log("Form is invalid");
+      buyerDetailsAreaRef.current?.scrollIntoView({ behavior: "smooth" });
     }
   }
 
@@ -72,6 +76,14 @@ export function CheckoutPage({ cartItems, clearCartItems }: CheckoutPageParams) 
     console.log(result.status + " : " + result.text);
   }
 
+  const scrollToFinalizePurchaseArea = () => {
+    finalizePurchaseAreaRef.current?.scrollIntoView({ behavior: "smooth" });
+  }
+  const handlePaymentSelection = (paymentMethod: "BT" | "MbWay") => {
+    setPaymentMethod(paymentMethod);
+    scrollToFinalizePurchaseArea();
+  }
+
   return (
     <Container>
       <h1 style={{
@@ -86,6 +98,7 @@ export function CheckoutPage({ cartItems, clearCartItems }: CheckoutPageParams) 
         }}>
 
         <div
+          ref={buyerDetailsAreaRef}
           style={{
             minWidth: '300px',
             maxWidth: '600px',
@@ -121,11 +134,11 @@ export function CheckoutPage({ cartItems, clearCartItems }: CheckoutPageParams) 
               className="payment-methods"
             >
               <BankTransferButton
-                onSelected={() => setPaymentMethod("BT")}
+                onSelected={() => handlePaymentSelection("BT")}
               />
 
               <MBWayButton
-                onSelected={() => setPaymentMethod("MbWay")}
+                onSelected={() => handlePaymentSelection("MbWay")}
               />
             </div>
           </div>
@@ -139,7 +152,10 @@ export function CheckoutPage({ cartItems, clearCartItems }: CheckoutPageParams) 
 
           {(paymentMethod === "BT" ||
             paymentMethod === "MbWay") &&
-            <div>
+            <div
+              ref={finalizePurchaseAreaRef}
+              style={{ marginBottom: "3rem" }}
+            >
               <Button
                 type="submit"
                 form="purchaseForm"
