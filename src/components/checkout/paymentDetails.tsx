@@ -37,20 +37,18 @@ export function PaymentDetails({
                     <th>Amount</th>
                 </tr>
                 <tr>
-                    <td>Items</td>
-                    <td>{itemsCost}€</td>
+                    <td className="sub-items">Items</td>
+                    <td className="sub-items">{itemsCost}€</td>
                 </tr>
                 <tr>
-                    <td>Shipping Cost</td>
-                    <td>{shippingCost}€</td>
+                    <td className="sub-items">Shipping</td>
+                    <td className="sub-items">{shippingCost}€</td>
                 </tr>
                 <tr>
-                    <td>Total</td>
-                    <td>{totalCost}€</td>
+                    <td className="total-item">Total</td>
+                    <td className="total-item">{totalCost}€</td>
                 </tr>
             </tbody>
         </table>
-
-
     </div>
 }

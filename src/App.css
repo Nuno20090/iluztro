@@ -13,8 +13,6 @@
   --product-type-color-6: #744141;
   /* Pendentes*/
   --product-type-color-7: #2d334e;
-
-
 }
 
 .App {
@@ -353,7 +351,6 @@
   width: 100%;
 }
 
-
 .bank-transfer {
   fill: yellow !important;
 }
@@ -373,20 +370,23 @@
 }
 
 .payment-details table {
-  _border: 1px solid black;
   border-collapse: collapse;
   width: 100%;
   text-align: left;
 }
 
 .payment-details th {
-  _border: 1px solid black;
   padding: 1rem;
 }
 
-.payment-details td {
-  _border: 1px solid black;
-  padding: 1rem;
+.payment-details .sub-items {
+  padding-block: 0.1rem;
+  padding-inline: 1.0rem;
+}
+
+.payment-details .total-item {
+  padding-block: 1.0rem;
+  padding-inline: 1.0rem;
 }
 
 .payment-details tr th:nth-child(2) {
@@ -400,7 +400,6 @@
 .payment-details tr:last-child {
   font-weight: 800;
 }
-
 
 * {
   box-sizing: border-box;
