@@ -13,6 +13,11 @@ export const standouts: IStandouts = {
             isNew: true
         },
         {
+            itemType: "Collection",
+            itemID: 7,
+            isNew: true
+        },
+        {
             itemType: "Product",
             itemID: 1001,
             isNew: false
@@ -20,6 +25,11 @@ export const standouts: IStandouts = {
         {
             itemType: "Product",
             itemID: 1002,
+            isNew: true
+        },
+        {
+            itemType: "Product",
+            itemID: 1003,
             isNew: true
         }
     ]
