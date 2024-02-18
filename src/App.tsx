@@ -56,6 +56,11 @@ function App() {
           />
 
           <Route
+            path="/iluztro"
+            element={<HomePage />}
+          />
+
+          <Route
             path="/collection/:collectionID"
             element={<CollectionPage />}
           />
