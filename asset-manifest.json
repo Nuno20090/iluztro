@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/iluztro/static/css/main.9013235f.css",
-    "main.js": "/iluztro/static/js/main.6ccecd38.js",
+    "main.css": "/iluztro/static/css/main.915269c6.css",
+    "main.js": "/iluztro/static/js/main.e3cde4b2.js",
     "static/js/787.5108d95f.chunk.js": "/iluztro/static/js/787.5108d95f.chunk.js",
     "static/media/mbway.svg": "/iluztro/static/media/mbway.35fadd549b0cd0b571bb633ebb3ccf45.svg",
     "static/media/bank-transfer.svg": "/iluztro/static/media/bank-transfer.ee3274179312e231fd9a280ceb071f1b.svg",
     "index.html": "/iluztro/index.html",
-    "main.9013235f.css.map": "/iluztro/static/css/main.9013235f.css.map",
-    "main.6ccecd38.js.map": "/iluztro/static/js/main.6ccecd38.js.map",
+    "main.915269c6.css.map": "/iluztro/static/css/main.915269c6.css.map",
+    "main.e3cde4b2.js.map": "/iluztro/static/js/main.e3cde4b2.js.map",
     "787.5108d95f.chunk.js.map": "/iluztro/static/js/787.5108d95f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9013235f.css",
-    "static/js/main.6ccecd38.js"
+    "static/css/main.915269c6.css",
+    "static/js/main.e3cde4b2.js"
   ]
 }
