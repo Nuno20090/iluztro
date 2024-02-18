@@ -13,7 +13,7 @@ export function HomePage() {
                 display: "flex",
                 flexWrap: "wrap",
                 justifyContent: "center",
-                gap: "10px",
+                gap: "2rem",
             }}>
 
             {standoutData.standouts.map((standout, index) => {
@@ -22,9 +22,8 @@ export function HomePage() {
                         key={index}
                         style={{
                             minWidth: "500px",
-                            width: "calc(50% - 5px)",
+                            width: "calc(50% - 1rem)",
                             aspectRatio: "2/1",
-                            border: "1px solid purple",
                         }}
                     >
                         {standout.itemType === "Collection" &&
