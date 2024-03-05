@@ -405,6 +405,44 @@
   font-weight: 800;
 }
 
+.standouts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.standout-item {
+    min-width: 500px;
+    width: calc(50% - 1rem);
+    aspect-ratio: 2 / 1;
+}
+
+@media (max-width: 500px) {
+    .standout-item {
+        min-width: 100%;
+        width: 100%;
+    }
+}
+
+.standout-item-text-container {
+    color: black;
+    font-size: 2rem;
+    background-color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.2em; /* Adjust this based on your font */
+    max-height: 2.4em; /* Twice the line-height for two lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    padding-inline: 0.5rem;
+}
+
+
+
 * {
   box-sizing: border-box;
   font-family: 'Quattrocento', serif;

@@ -8,23 +8,12 @@ export function HomePage() {
 
     const renderStandouts = () => {
 
-        return <div
-            style={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center",
-                gap: "2rem",
-            }}>
-
+        return <div className="standouts-container">
             {standoutData.standouts.map((standout, index) => {
                 return (
                     <div
                         key={index}
-                        style={{
-                            minWidth: "500px",
-                            width: "calc(50% - 1rem)",
-                            aspectRatio: "2/1",
-                        }}
+                        className="standout-item"
                     >
                         {standout.itemType === "Collection" &&
                             <StandoutCollection
@@ -52,7 +41,8 @@ export function HomePage() {
         <div
             style={{
                 maxWidth: "1200px",
-                marginTop: "2rem"
+                marginTop: "2rem",
+                marginBottom: "7rem"
             }}>
             {renderStandouts()}
         </div>

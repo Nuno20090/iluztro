@@ -66,11 +66,8 @@ export function StandoutCollection({ standout }: StandoutCollectionParams) {
                             }}>
 
                             <div
-                                style={{
-                                    color: "black",
-                                    fontSize: "2rem",
-                                    backgroundColor: "white",
-                                }}
+                                className="standout-item-text-container"
+                                
                             >
                                 {collectionInfo.name_en} Collection
                             </div>

@@ -19,10 +19,10 @@ import './App.css';
 function App() {
 
   const [cartItems, setCartItems] = useState<ICartItem[]>([
-    { productID: 1013, variantID: 10131 },
+    /*{ productID: 1013, variantID: 10131 },
     { productID: 1013, variantID: 10132 },
     { productID: 1012, variantID: undefined },
-    { productID: 2011, variantID: undefined },
+    { productID: 2011, variantID: undefined },*/
   ]);
 
   const addCartItem = (productID: number, variantID?: number) => {
